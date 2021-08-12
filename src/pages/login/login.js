@@ -10,7 +10,8 @@ export const Login = () => {
   rootElement.innerHTML = `
   <section class="login-left-section">
     <header>
-      <a>Sobre nós</a>
+      <a href="#">Sobre nós</href=>
+      
     </header>
     <main>
       <div>

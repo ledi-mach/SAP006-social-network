@@ -143,8 +143,6 @@ export const Feed = () => {
   darkMode(); 
 
 
-
-
 const postsCollection = firebase.firestore().collection("posts");
 
 //Função para adicionar os posts no firebase e printar na tela:
@@ -202,7 +200,13 @@ console.log(post.data().url)
        
           </div>
           <section class="likes-comments-bar">
-            <button data-likePostButton = "${post.id}"> Curtir</button>
+          <section class="anim-like"id="anim-like" ></section>
+           
+          <button class="like-btn" id="like-btn"  data-likePostButton = "${post.id}">
+          
+          </button>     
+      
+         
             ${(quantityOfLikes => {
               if(quantityOfLikes === 1)
                 return `<p class="f-20 like-value" data-likes-id="${post.id}"> <span data-like-value-to-be-changed="${post.id}"> ${quantityOfLikes} </span> <span data-like-text-to-be-changed="${post.id}"> ❤️ Curtida </span> </p>`
@@ -232,9 +236,25 @@ console.log(post.data().url)
             <ul data-comment-post-id="${post.id}"> </ul>
           </div>
         </div>
+    
       `
+
+
+
     
       postElement.innerHTML = postTemplate
+
+
+      const showheat = postElement.querySelector("#like-btn").addEventListener("click", () => {
+        const element = postElement.querySelector(".anim-like");
+        element.style.opacity = 1;   
+    
+   });
+   showheat;
+
+
+
+ 
     
    //Pegando valores para edit
    const editSaveButton = postElement.querySelector(".btn-edit-save")
