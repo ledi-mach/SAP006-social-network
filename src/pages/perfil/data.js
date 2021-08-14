@@ -9,6 +9,7 @@ export const updateUserProfile = (name, url) => {
     photoURL: url,
   }).then(() => {
     console.log('Perfil atualizado');
+    console.log(url)
   }).catch((error) => {
     getError(error);
   });

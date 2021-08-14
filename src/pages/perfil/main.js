@@ -1,5 +1,5 @@
 import {
-  showUserImage, changeProfileImage, updateUserProfile, goBackToFeed,
+  showUserImage, changeProfileImage, updateUserProfile, goBackToFeed 
 } from './data.js';
 
 export const Profile = () => {

@@ -1,4 +1,7 @@
 import { getTheRoad, logOut, sendImageToDatabase } from '../../lib/auth.js';
+import {
+  likePost, commentPost, showComments, deletePost, likePostComment, deletePostComment,
+} from './data.js';
 
 export const Feed = () => {
   const rootElement = document.createElement('div');
@@ -128,8 +131,8 @@ export const Feed = () => {
       const changeAside = rootElement.querySelector('aside');
       const changeFeed = rootElement.querySelector('.feed-left-section');
       change.style.background = 'rgb(30, 35, 41)';
-      changeAside.style.background = 'rgb(19, 22, 26)'
-      changeFeed.style.background = 'rgb(19, 22, 26)'
+      changeAside.style.background = 'rgb(19, 22, 26)';
+      changeFeed.style.background = 'rgb(19, 22, 26)';
     });
   };
   darkMode();
@@ -298,7 +301,8 @@ export const Feed = () => {
     if (deleteButton) {
       const deleteConfirmation = confirm('Você realmente gostaria de deletar este post?');
       if (deleteConfirmation) {
-        deletePost(postID);
+        rootElement.querySelector('#postado').innerHTML = '';
+        deletePost(postID, loadPosts);
       } else {
         return false;
       }
@@ -308,8 +312,8 @@ export const Feed = () => {
     const likeButton = target.dataset.likepostbutton;
     if (likeButton) {
       async function updateLikes () {
-        likePost(postID);
-        const resultado = await likePost(postID);
+        likePost(postID, currentUserEmail);
+        const resultado = await likePost(postID, currentUserEmail);
         const valueToBeChanged = rootElement.querySelector('[data-like-value-to-be-changed="' + postID + '"]');
         const textToBeChanged  = rootElement.querySelector('[data-like-text-to-be-changed="' + postID + '"]');
         let amountOfLikes  = parseInt(valueToBeChanged.textContent,10);
@@ -357,7 +361,7 @@ export const Feed = () => {
       });
     };
 
-     //Show Post Comments:
+    //  Show Post Comments:
     const showCommentsButton = target.dataset.showcomments;
     if (showCommentsButton) {
       async function getComments () {
@@ -371,8 +375,10 @@ export const Feed = () => {
     const commentButton = target.dataset.commentpostbutton;
     if (commentButton) {
       async function getCurrentComments () {
-        commentPost(postID);
-        const currentComments = await commentPost(postID);
+        const newCommentInput = rootElement.querySelector('[data-commentPostInput="' + postID + '"]');
+        const newCommentText = newCommentInput.value;
+        commentPost(postID, newCommentText, currentUserEmail);
+        const currentComments = await commentPost(postID, newCommentText, currentUserEmail);
         printComments (currentComments, postID);
       };
       getCurrentComments ();
@@ -383,8 +389,8 @@ export const Feed = () => {
     if (likeCommentButton) {
       const commentID = target.dataset.likecommentbutton;
       async function getCurrentCommentLikes () {
-        likePostComment(postIDForComments, commentID);
-        const likeOrDeslike = await likePostComment (postIDForComments, commentID);
+        likePostComment(postIDForComments, commentID, currentUserEmail);
+        const likeOrDeslike = await likePostComment (postIDForComments, commentID, currentUserEmail);
         const valueToBeChanged = rootElement.querySelector('[data-comment-likes-value-to-be-changed="' + commentID + '"]');
         const textToBeChanged = rootElement.querySelector('[data-comment-likes-text-to-be-changed="' + commentID + '"]');
         let amountOfLikes  = parseInt(valueToBeChanged.textContent,10);
@@ -427,117 +433,10 @@ export const Feed = () => {
     }
   });
 
+  // Async functions:
 
-
-  // Funções (delete, like, comment and logout):
-  function deletePost(postID) {
-    postsCollection.doc(postID).delete().then(() => {
-      rootElement.querySelector('#postado').innerHTML = '';
-      loadPosts();
-    });
-  }
-
-  function likePost(postID) {
-    const likesPostId = postsCollection.doc(postID);
-    const promiseResult = likesPostId.get().then(((post) => {
-      const people = post.data().likes;
-      if (people.length >= 1) {
-        if (people.includes(currentUserEmail)) {
-          likesPostId.update({
-            likes: firebase.firestore.FieldValue.arrayRemove(currentUserEmail),
-          });
-          return 'deslike';
-        }
-        likesPostId
-          .update({
-            likes: firebase.firestore.FieldValue.arrayUnion(currentUserEmail),
-          });
-        return 'like';
-      }
-      likesPostId
-        .update({
-          likes: firebase.firestore.FieldValue.arrayUnion(currentUserEmail),
-        });
-      return 'like';
-    })).catch((error) => {
-      console.log(error);
-    });
-    return promiseResult;
-  }
-
-  function showComments(postID) {
-    const commentPostId = postsCollection.doc(postID);
-    const promiseResult = commentPostId.get().then(((post) => {
-      const comments = (post.data().comments);
-      return comments;
-    }));
-    return promiseResult;
-  }
-
-  function commentPost(postID) {
-    const commentPostId = postsCollection.doc(postID);
-    const promiseResult = commentPostId.get().then((post) => {
-      const newCommentInput = rootElement.querySelector('[data-commentPostInput="' + postID + '"]');
-      const newCommentText = newCommentInput.value;
-      const comments = post.data().comments;
-      if (newCommentText !== '') {
-        const newComment = {
-          owner: currentUserEmail,
-          content: newCommentText,
-          postOfOrigin: postID,
-          commentLikes: [],
-          id: postID + new Date().toLocaleString('pt-BR'),
-        };
-        commentPostId.update({ comments: firebase.firestore.FieldValue.arrayUnion(newComment) });
-        const currentComments = comments.concat(newComment);
-        return currentComments;
-      }
-      return comments;
-    });
-    return promiseResult;
-  }
-
-  function likePostComment(postID, commentID) {
-    const commentPostId = postsCollection.doc(postID);
-    const promiseResult = commentPostId.get().then(((post) => {
-      const comments = (post.data().comments);
-      const commentToLikeOrDislike = comments.filter((comment) => comment.id === commentID);
-      const commentsNotChanged = comments.filter((comment) => comment.id !== commentID);
-      let action = '';
-
-      if (commentToLikeOrDislike[0].commentLikes.length >= 1) {
-        if (commentToLikeOrDislike[0].commentLikes.includes(currentUserEmail)) {
-          const index = commentToLikeOrDislike[0].commentLikes.indexOf(currentUserEmail);
-          if (index > -1) {
-            commentToLikeOrDislike[0].commentLikes.splice(index, 1);
-          }
-          action = 'deslike';
-        } else {
-          commentToLikeOrDislike[0].commentLikes.push(currentUserEmail);
-          action = 'like';
-        }
-      } else {
-        commentToLikeOrDislike[0].commentLikes.push(currentUserEmail);
-        action = 'like';
-      }
-      const newContent = commentToLikeOrDislike.concat(commentsNotChanged);
-      commentPostId.update({ comments: newContent });
-      return action;
-    }));
-    return promiseResult;
-  }
-
-  function deletePostComment(postID, commentID) {
-    const commentPostId = postsCollection.doc(postID);
-    const promiseResult = commentPostId.get().then(((post) => {
-      const comments = (post.data().comments);
-      const commentsToKeep = comments.filter((comment) => comment.id !== commentID);
-      commentPostId.update({ comments: commentsToKeep });
-      return commentsToKeep;
-    }));
-    return promiseResult;
-  }
-
+  
+  // Sign Out
   const btnSignOut = rootElement.querySelector('#button-signout');
   btnSignOut.addEventListener('click', logOut);
 
@@ -545,6 +444,7 @@ export const Feed = () => {
   const previousEl = rootElement.querySelector('#previous');
   const sliderEl = rootElement.querySelector('#slider');
 
+  // Slider Bolinhas
   function onNextClick() {
     const imgWidth = sliderEl.offsetWidth;
     sliderEl.scrollLeft += imgWidth;
