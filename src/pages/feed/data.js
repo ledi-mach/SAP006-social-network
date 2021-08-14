@@ -1,106 +1,67 @@
-export const likePost = (postID, currentUserEmail) => {
-  const likesPostId = firebase.firestore().collection('posts').doc(postID);
-  const promiseResult = likesPostId.get().then(((post) => {
-    const people = post.data().likes;
-    if (people.length >= 1) {
-      if (people.includes(currentUserEmail)) {
-        likesPostId.update({
-          likes: firebase.firestore.FieldValue.arrayRemove(currentUserEmail),
-        });
-        return 'deslike';
-      }
-      likesPostId
-        .update({
-          likes: firebase.firestore.FieldValue.arrayUnion(currentUserEmail),
-        });
-      return 'like';
-    }
-    likesPostId
-      .update({
-        likes: firebase.firestore.FieldValue.arrayUnion(currentUserEmail),
-      });
-    return 'like';
-  })).catch((error) => {
-    console.log(error);
-  });
-  return promiseResult;
-};
+import {
+  likePost, commentPost, showComments, likePostComment, deletePostComment,
+} from './services.js';
 
-export const commentPost = (postID, newCommentText, currentUserEmail) => {
-  const commentPostId = firebase.firestore().collection('posts').doc(postID);
-  const promiseResult = commentPostId.get().then((post) => {
-    const comments = post.data().comments;
-    if (newCommentText !== '') {
-      const newComment = {
-        owner: currentUserEmail,
-        content: newCommentText,
-        postOfOrigin: postID,
-        commentLikes: [],
-        id: postID + new Date().toLocaleString('pt-BR'),
-      };
-      commentPostId.update({ comments: firebase.firestore.FieldValue.arrayUnion(newComment) });
-      const currentComments = comments.concat(newComment);
-      return currentComments;
-    }
-    return comments;
-  });
-  return promiseResult;
-};
-
-export const showComments = (postID) => {
-  const commentPostId = firebase.firestore().collection('posts').doc(postID);
-  const promiseResult = commentPostId.get().then(((post) => {
-    const comments = (post.data().comments);
-    return comments;
-  }));
-  return promiseResult;
-};
-
-export const deletePost = (postID, loadPosts) => {
-  firebase.firestore().collection('posts').doc(postID).delete()
-    .then(() => {
-      loadPosts();
-    });
-};
-
-export const likePostComment = (postID, commentID, currentUserEmail) => {
-  const commentPostId = firebase.firestore().collection('posts').doc(postID);
-  const promiseResult = commentPostId.get().then(((post) => {
-    const comments = (post.data().comments);
-    const commentToLikeOrDislike = comments.filter((comment) => comment.id === commentID);
-    const commentsNotChanged = comments.filter((comment) => comment.id !== commentID);
-    let action = '';
-
-    if (commentToLikeOrDislike[0].commentLikes.length >= 1) {
-      if (commentToLikeOrDislike[0].commentLikes.includes(currentUserEmail)) {
-        const index = commentToLikeOrDislike[0].commentLikes.indexOf(currentUserEmail);
-        if (index > -1) {
-          commentToLikeOrDislike[0].commentLikes.splice(index, 1);
-        }
-        action = 'deslike';
-      } else {
-        commentToLikeOrDislike[0].commentLikes.push(currentUserEmail);
-        action = 'like';
-      }
+export const updateLikes = async (postID, currentUserEmail, valueToBeChanged,
+  textToBeChanged, amountOfLikes) => {
+  likePost(postID, currentUserEmail);
+  const resultado = await likePost(postID, currentUserEmail);
+  if (resultado === 'like') {
+    const newAmountOflikes = amountOfLikes + 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = '❤️ Curtida';
     } else {
-      commentToLikeOrDislike[0].commentLikes.push(currentUserEmail);
-      action = 'like';
+      textToBeChanged.innerHTML = '❤️ Curtidas';
     }
-    const newContent = commentToLikeOrDislike.concat(commentsNotChanged);
-    commentPostId.update({ comments: newContent });
-    return action;
-  }));
-  return promiseResult;
-}
-
-export const deletePostComment = (postID, commentID) => {
-  const commentPostId = firebase.firestore().collection('posts').doc(postID);
-  const promiseResult = commentPostId.get().then(((post) => {
-    const comments = (post.data().comments);
-    const commentsToKeep = comments.filter((comment) => comment.id !== commentID);
-    commentPostId.update({ comments: commentsToKeep });
-    return commentsToKeep;
-  }));
-  return promiseResult;
+  } else {
+    const newAmountOflikes = amountOfLikes - 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = '❤️ Curtida';
+    } else {
+      textToBeChanged.innerHTML = '❤️ Curtidas';
+    }
+  }
 };
 
+export const getComments = async (postID, printComments) => {
+  const currentComments = await showComments(postID);
+  printComments(currentComments, postID);
+};
+
+export const getCurrentCommentsToComment = async (postID, newCommentText, currentUserEmail,
+  printComments) => {
+  commentPost(postID, newCommentText, currentUserEmail);
+  const currentComments = await commentPost(postID, newCommentText, currentUserEmail);
+  printComments(currentComments, postID);
+};
+
+export const getCurrentCommentLikes = async (postIDForComments, currentUserEmail, commentID,
+  valueToBeChanged, textToBeChanged, amountOfLikes) => {
+  likePostComment(postIDForComments, commentID, currentUserEmail);
+  const likeOrDeslike = await likePostComment(postIDForComments, commentID, currentUserEmail);
+  if (likeOrDeslike === 'like') {
+    const newAmountOflikes = amountOfLikes + 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = '❤️ Curtida';
+    } else {
+      textToBeChanged.innerHTML = '❤️ Curtidas';
+    }
+  } else {
+    const newAmountOflikes = amountOfLikes - 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = '❤️ Curtida';
+    } else {
+      textToBeChanged.innerHTML = '❤️ Curtidas';
+    }
+  }
+};
+
+export const getCurrentCommentsToDelete = async (postIDForComments, commentID, printComments) => {
+  deletePostComment(postIDForComments, commentID);
+  const currentComments = await deletePostComment(postIDForComments, commentID);
+  printComments(currentComments, postIDForComments);
+};
