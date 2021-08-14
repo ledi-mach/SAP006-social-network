@@ -40,7 +40,7 @@ body {
   }
   
   .login-left-section header {
-	margin-bottom: 5%;
+	margin-bottom: 3%;
 	padding: 3% 5%;
 	text-align: start;
 	font-size: 90%;
@@ -123,8 +123,8 @@ body {
 	border: solid 2pt;
   }
 
-	.keep-logged-in {
-		font-size: 90% !important;
+	.checkbox-keep-logged-in {
+		font-size: 100% !important;
 	}
 
 	form input[type="checkbox"] {
@@ -472,8 +472,7 @@ body {
 	}
 	
 	
-	#eye {
-		
+	.div-password img {
 		width: 18px;
 		position: absolute;
 		margin-left: -30px;
@@ -846,7 +845,7 @@ body {
 					.login-btn-sig-log {
 						margin-top: 68%;
 					}
-					#button-login {
+					#btn-login {
 						display: flex;
 						margin-bottom: -120px;
 						width: 100%;
@@ -873,7 +872,7 @@ body {
 						
 					}
 					
-					#button-sign-in {
+					#btn-sign-in {
 						box-shadow: none;
 						border: none;
 						color: black!important ;
