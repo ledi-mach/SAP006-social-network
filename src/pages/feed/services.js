@@ -1,4 +1,4 @@
-import { getError } from '../../lib/errors';
+import { getError } from '../../lib/errors.js';
 
 export const getPosts = (createAndPrintAllPosts) => {
   firebase.firestore().collection('posts').orderBy('data', 'desc').get()
