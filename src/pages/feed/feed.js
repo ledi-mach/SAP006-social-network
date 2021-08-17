@@ -15,10 +15,12 @@ export const Feed = () => {
     <div class="feed-left-section">
       <aside>  
         <section class='profile-area'>
+
+        <img src='./images/name-icon.png' class='icon-logo-aside'>
           <div class='div-perfil'>
-            <img src='imagens/user.png' id='photo' class='photo feed-user-photo'>
+            <img src='images/user.png' id='photo' class='photo feed-user-photo'>
             <div class = "feed-welcome-user">
-              <p> Bem vinda </p>
+              <p> Bem vinde </p>
               <p class='name-user' id="name-user"></p> 
             </div>
           </div>
@@ -138,9 +140,11 @@ export const Feed = () => {
       const change = rootElement.querySelector('#all-container');
       const changeAside = rootElement.querySelector('aside');
       const changeFeed = rootElement.querySelector('.feed-left-section');
+      const changePostados = rootElement.querySelector('.div-postados');
       change.style.background = 'rgb(30, 35, 41)';
       changeAside.style.background = 'rgb(19, 22, 26)';
       changeFeed.style.background = 'rgb(19, 22, 26)';
+      changePostados.style.background = 'rgb(19,22,26)';
     });
   };
   darkMode();
@@ -150,7 +154,7 @@ export const Feed = () => {
   //  Função para adicionar os posts no firebase e printar na tela:
   rootElement.querySelector('#postForm').addEventListener('submit', (event) => {
     event.preventDefault();
-    const postText = rootElement.querySelector('#postText');
+    //const postText = rootElement.querySelector('#postText');
     const text = rootElement.querySelector('#postText').value;
     const url = rootElement.querySelector('#hide-url').value;
     const postData = () => {
@@ -159,15 +163,15 @@ export const Feed = () => {
     };
 
     const post = {
-      text: text,
-      url:url,
+      text:text,
+      url: url,
       user_id: currentUserEmail,
       data: postData(),
       likes: [],
       comments: [],
     };
 
-    if (postText.value === '') {
+    if (text === '') {
       return;
     }
     postsCollection.add(post).then(() => {
@@ -183,46 +187,46 @@ export const Feed = () => {
           <p class="user-post"> ${post.data().user_id} <br>${post.data().data} </p>
           <div class="data-post-id" data-postid="${post.id}" data-postOwner="${post.data().user_id}">
           ${((user) => {
-            if (user === currentUserEmail) {
-              return `<button type="submit" data-deletePostButton="${post.id}"  data-item ="deletepost" class="delete-button"> </button>`;
-            } return `<button type="submit" data-deletePostButton="${post.id}" class="delete-button" hidden> </button>`;
-          })(post.data().user_id)}
+        if (user === currentUserEmail) {
+          return `<button type="submit" data-deletePostButton="${post.id}"  data-item ="deletepost" class="delete-button"> </button>`;
+        } return `<button type="submit" data-deletePostButton="${post.id}" class="delete-button" hidden> </button>`;
+      })(post.data().user_id)}
           ${((user) => {
-    if (user === currentUserEmail) {
-      return `<button type="submit" data-editPostButton="${post.id}" class="btn-edit"></button>`;
-    } return `<button type="submit" data-editPostButton="${post.id}" class="btn-edit" hidden></button>`;
-  })(post.data().user_id)}
+        if (user === currentUserEmail) {
+          return `<button type="submit" data-editPostButton="${post.id}" class="btn-edit"></button>`;
+        } return `<button type="submit" data-editPostButton="${post.id}" class="btn-edit" hidden></button>`;
+      })(post.data().user_id)}
             <button type="submit" data-cancelEditionPostButton="${post.id}" class="btn-cancel-edit" hidden> Cancelar</button>
             <button type="submit" data-saveEditionPostButton="${post.id}" class="btn-edit-save" hidden> Salvar </button>
           </div>
           <p class="txt"> ${post.data().text} </p>
           <textarea class='edit-text-area' data-edit-text-area='${post.id}' hidden>${post.data().text}</textarea>
           ${((url) => {
-    if (url !== '') {
-      return `<img class="img-po" src="${post.data().url}"> </img>`;
-    } return `<img id="hide-img" src="${post.data().url}"> </img>`;
-  })(post.data().url)}
+        if (url !== '') {
+          return `<img class="img-po" src="${post.data().url}"> </img>`;
+        } return `<img id="hide-img" src="${post.data().url}"> </img>`;
+      })(post.data().url)}
           <section class="likes-comments-bar">
         
           <section class="anim-like"id="anim-like" >
           </section> 
           <button class="like-btn" id="like-btn" data-likePostButton = "${post.id}"></button> 
             ${((quantityOfLikes) => {
-    if (quantityOfLikes === 1) {
-      return `<p class="f-20 like-value" data-likes-id="${post.id}"> 
+        if (quantityOfLikes === 1) {
+          return `<p class="f-20 like-value" data-likes-id="${post.id}"> 
                 <span data-like-value-to-be-changed="${post.id}"> ${quantityOfLikes} </span> 
                 <span data-like-text-to-be-changed="${post.id}">Curtida </span> 
               </p>`;
-    } if (quantityOfLikes > 1) {
-      return `<p class="f-20 like-value" data-likes-id="${post.id}">
+        } if (quantityOfLikes > 1) {
+          return `<p class="f-20 like-value" data-likes-id="${post.id}">
                 <span data-like-value-to-be-changed="${post.id}"> ${quantityOfLikes} </span> 
                 <span data-like-text-to-be-changed="${post.id}">Curtidas </span> 
               </p>`;
-    } return `<p class="f-20 like-value" data-likes-id="${post.id}"> 
+        } return `<p class="f-20 like-value" data-likes-id="${post.id}"> 
                 <span data-like-value-to-be-changed="${post.id}"> ${0} </span>
                 <span data-like-text-to-be-changed="${post.id}">Curtidas </span> 
               </p>`;
-  })(post.data().likes.length)}
+      })(post.data().likes.length)}
           </section>
           <div class="comments">
             <input required data-commentPostInput="${post.id}" placeholder='O que você quer comentar?'></input>
@@ -238,6 +242,15 @@ export const Feed = () => {
           <button class="delete-butons-modal" id="cancel-delete-modal"> Cancelar </button>
           </div>
           </div>
+
+          <div class="confirm-delete-comment">
+          <div class="modal-delete-comment">
+          <div class="h1-modal-comment">Você tem certeza que quer excluir esse comentário?</div>
+          <button class="delete-buttons-modal" id="confirm-delete-comment">Confirmar</button>
+          <button class="delete-butons-modal" id="cancel-delete-comment"> Cancelar </button>
+          </div>
+          </div>
+
         <div class="comments">
           <ul data-comment-post-id="${post.id}"> </ul>
         </div>
@@ -276,25 +289,28 @@ export const Feed = () => {
       const commentArea = rootElement.querySelector(`[data-commentPostUl="${parentID}"]`);
       commentArea.innerHTML = '';
       commentsToPrint.forEach((comment) => {
+
+
         const newItem = `
+
             <li class="comment-f-20" id="${comment.id}">
               <p class="comment-owner"> ${comment.owner} </p>
               <p class="comment-content"> ${comment.content}</p>
               ${((user) => {
-                if (user === currentUserEmail) {
-                  return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}"> </button>`
-                } return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}" hidden> </button>`
-              })(comment.owner)}
+            if (user === currentUserEmail) {
+              return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}" data-item="delete-comment"></button>`
+            } return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}" hidden> </button>`
+          })(comment.owner)}
               <button class="like-comment-btn" data-likeCommentButton="${comment.id}"> </button> 
             
             ${((quantityOfLikes) => {
-    if (quantityOfLikes === 1) {
-      return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtida </span> </p>`
-    } if (quantityOfLikes > 1) {
-      return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`
-    }
-    return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>` 
-  })(comment.commentLikes.length)}
+            if (quantityOfLikes === 1) {
+              return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtida </span> </p>`
+            } if (quantityOfLikes > 1) {
+              return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`
+            }
+            return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`
+          })(comment.commentLikes.length)}
             `;
         commentArea.innerHTML += newItem;
       });
@@ -324,26 +340,58 @@ export const Feed = () => {
       rootElement.querySelector('#postado').innerHTML = '';
       loadPosts();
     }
-  
-//delete com modal 
-    if(target.dataset.item == "deletepost"){
+
+    //delete com modal 
+    if (target.dataset.item == "deletepost") {
       const divConfirmDelete = target.parentNode.parentNode.children[7]
       const divConfirmDeleteModal = target.parentNode.parentNode.children[7].children[0].children[1]
       const divCancelDeleteModal = target.parentNode.parentNode.children[7].children[0].children[2]
- 
-      divConfirmDelete.style.display ="block";
+
+      divConfirmDelete.style.display = "block";
       divConfirmDeleteModal.addEventListener("click", () => {
         rootElement.querySelector('#postado').innerHTML = '';
         deletePost(postID, loadPosts)
-        //  .then(()=>{
-        divConfirmDelete.style.display="none";
-        // })
-    })
+        divConfirmDelete.style.display = "none";
+      })
 
       divCancelDeleteModal.addEventListener("click", () => {
-        divConfirmDelete.style.display="none"
+        divConfirmDelete.style.display = "none"
       })
     }
+
+
+   /* //Delete comment com modal
+    if (target.dataset.item == "delete-comment") {
+
+      const divConfirmDeleteComment = target.parentNode.parentNode.parentNode.parentNode.children[8]
+      const divModalDeleteComment = target.parentNode.parentNode.parentNode.parentNode.children[8].children[0].children[1]
+      const divModalCancelDeleteComment = target.parentNode.parentNode.parentNode.parentNode.children[8].children[0].children[2]
+      console.log(divConfirmDeleteComment)
+
+      divConfirmDeleteComment.style.display = "block";
+      divModalDeleteComment.addEventListener("click", () => {
+
+        rootElement.querySelector('#postado').innerHTML = '';
+        getCurrentCommentsToDelete(postIDForComments, commentID, printComments)
+        divConfirmDeleteComment.style.display = "none";
+      })
+
+      divModalCancelDeleteComment.addEventListener("click", () => {
+        divConfirmDeleteComment.style.display = "none"
+      })
+    } */
+
+    // Delete Post Comment:
+    const deleteCommentButton = target.dataset.deletecommentbutton;
+    if (deleteCommentButton) {
+      const commentID = target.dataset.deletecommentbutton;
+      const deleteConfirmation = confirm('Você realmente gostaria de deletar este Comentário?');
+      if (deleteConfirmation) {
+        getCurrentCommentsToDelete(postIDForComments, commentID, printComments);
+      } else {
+        return false;
+      }
+    } 
 
     // Like Post:
     const likeButton = target.dataset.likepostbutton;
@@ -380,17 +428,7 @@ export const Feed = () => {
         valueToBeChanged, textToBeChanged, amountOfLikes);
     }
 
-    // Delete Post Comment:
-    const deleteCommentButton = target.dataset.deletecommentbutton;
-    if (deleteCommentButton) {
-      const commentID = target.dataset.deletecommentbutton;
-      const deleteConfirmation = confirm('Você realmente gostaria de deletar este Comentário?');
-      if (deleteConfirmation) {
-        getCurrentCommentsToDelete(postIDForComments, commentID, printComments);
-      } else {
-        return false;
-      }
-    }
+
   });
 
   // Sign Out

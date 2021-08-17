@@ -5,7 +5,7 @@ body {
 	font-family: "Roboto";
 	color: #025159;
 	background-color: #edeae5;
-	/**/
+	
   }
   
   .login-container,
@@ -141,38 +141,38 @@ body {
 	background-color: transparent;
   }
   
-	.transparent {
+  .transparent {
 		color: transparent;
 		}
 		
-		.login-input-has-an-error {
+	.login-input-has-an-error {
 		border: #ff6666 solid 1.5pt !important;
 		background-color: #ffe6e6;
-		}
+	}
 		
-		.login-error-div {
+	.login-error-div {
 		margin-top: 2%;
 		margin-bottom: 2%;
-		}
+	}
 		
-		.login-error {
+	.login-error {
 		color: #ff3333;
 		font-weight: 500;
-		}
+	}
 		
-		.login-left-section footer {
+	.login-left-section footer {
 		position: relative;
 		bottom:-5.5%;
 		font-size: 80%;
-		}
+	}
 	
-		.button-submit button {
+	.button-submit button {
 		width: 20%;
 		padding: 2% 0%;
 		background-color: #025159;
 		color: white;
 		border-radius: 25px;
-		}
+	}
 	
 	/* Feed */ 
 	.all-container {
@@ -184,9 +184,14 @@ body {
 	.feed-left-section {
 		width: 15%;
 		height: 100vh;
-		padding: 5% 0%;
+		/*padding: 5% 0%;*/
 		position: fixed;
 		background-color: rgb(182, 179, 179);
+
+	}
+	.icon-logo-aside {
+		width: 95%;
+		margin-top: 1%;
 	}
 	
 	.feed-right-section {
@@ -337,8 +342,8 @@ body {
 		width: 90%;
 		height: 90%;
 		box-shadow: 0 0 0 0;
-			border: 0 none;
-			outline: 0;
+		border: 0 none;
+		outline: 0;
 		border-radius: 10px;
 		margin-top: 1%;
 		margin-left: 5%;
@@ -373,17 +378,17 @@ body {
 		border-radius: 10px;
 		border: 1px solid #9dd8df;
 	}
-		/*aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
+		
 	 
 		.user-post{
 		margin-top: 0px;
 		margin-bottom: 10px;
-			font-size: 13px;
-			text-align: start;
-			color:rgb(199, 190, 190);
-			background-color: #025159;
-			padding: 1%;
-			border-radius: 5px 5px 0px 0px;
+		font-size: 13px;
+		text-align: start;
+		color:rgb(199, 190, 190);
+		background-color: #025159;
+		padding: 1%;
+		border-radius: 8px 8px 0px 0px;
 		
 		}
 		
@@ -455,9 +460,10 @@ body {
 		}
 	
 	.delete-button {
-		cursor: pointer;
+	cursor: pointer;
 	background-image: url('https://image.shutterstock.com/image-vector/trash-can-icon-vector-delete-260nw-1722113617.jpg');
 	background-size: 26px 26px;
+	margin-right: 5px;
 	width: 25px;
 	height: 25px;
 	border-radius: 25px;
@@ -496,10 +502,6 @@ body {
 		display: inline;
 		margin-right: 10px;
 	}
-	/*.comment-f-20{
-		background-color: red;
-		text-decoration:none;
-	}*/
 	
 	.comment-button, .show-comments-button{
 		border: 2px solid transparent;
@@ -538,7 +540,7 @@ body {
 	
 	.txt{
 		height: 60px;
-		overflow: auto; /*scrollbar*/
+		overflow: auto; 
 		margin-top: 3px;
 		margin-bottom: 0;
 	}
@@ -691,7 +693,7 @@ body {
 	
 
 	/*MODAL*/
-	.confirm-delete{
+	.confirm-delete, .confirm-delete-comment{
 		width: 100%;
 		height: 100%;
 		padding: 250px 0px;
@@ -703,7 +705,7 @@ body {
 		display: none; 
 	   
 	}
-	.modal-delete{
+	.modal-delete, .modal-delete-comment{
 	  text-align: center;
 	  width: 300px;
 	  height: 150px;
@@ -784,12 +786,6 @@ body {
 		.comments ul{
 			list-style-type: none ;
 		}
-
-	/*	.like-btn, .f-20{
-			display: inline;
-			margin-right: 10px;
-			} 
-*/
 
 .like-btn{
 	cursor: pointer;
