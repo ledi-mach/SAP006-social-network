@@ -47,7 +47,7 @@ export const loginWithGoogle = (checkbox) => {
   }
 };
 
-const updateProfileName = (name) => {
+export const updateProfileName = (name) => {
   firebase.auth().currentUser.updateProfile({ displayName: name });
 };
 
@@ -96,5 +96,3 @@ export const sendImageToDatabase = (file, showUrlOfImagesToPubish) => {
     });
   });
 };
-
-firebase.auth().languageCode = 'PT_br';
