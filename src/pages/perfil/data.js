@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   likePost, commentPost, showComments, likePostComment, deletePostComment,
 } from './services.js';
@@ -23,6 +24,21 @@ export const updateLikes = async (postID, currentUserEmail, valueToBeChanged,
       textToBeChanged.innerHTML = 'Curtidas';
     }
   }
+=======
+import { getTheRoad } from '../../lib/auth.js';
+import { getError } from '../../lib/errors.js';
+
+export const updateUserProfile = (name, url) => {
+  const user = firebase.auth().currentUser;
+  user.updateProfile({
+    displayName: name,
+    photoURL: url,
+  }).then(() => {
+    console.log('Perfil atualizado');
+  }).catch((error) => {
+    getError(error);
+  });
+>>>>>>> cac7525c80d9eb030574f35166408fb33eed129e
 };
 
 export const getComments = async (postID, printComments) => {
