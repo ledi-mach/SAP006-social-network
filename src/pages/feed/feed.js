@@ -90,10 +90,8 @@ export const Feed = () => {
     </div>
   </main>
   `;
-
   const showUrlOfImagesToPublish = (urlFile) => {
     rootElement.querySelector('#hide-url').value = `${urlFile}`;
-    rootElement.querySelector('#postText').placeholder = 'O que você quer compartilhar?';
   };
 
   const uploadImage = () => {
@@ -147,7 +145,6 @@ export const Feed = () => {
 
   const postsCollection = firebase.firestore().collection('posts');
   const currentUserEmail = firebase.auth().currentUser.email;
-
   function createPostTemplate(post) {
     const postTemplate = `
           <p class="user-post"> ${post.data().user_id} <br>${post.data().data} </p>
@@ -235,8 +232,6 @@ export const Feed = () => {
     getPosts(createAndPrintAllPosts);
   }
 
-  
-  //  Função para adicionar os posts no firebase e printar na tela:
   rootElement.querySelector('#postForm').addEventListener('submit', (event) => {
     event.preventDefault();
     const postText = rootElement.querySelector('#postText');
@@ -248,8 +243,8 @@ export const Feed = () => {
     };
 
     const post = {
-      text: text,
-      url:url,
+      text,
+      url,
       user_id: currentUserEmail,
       data: postData(),
       likes: [],
@@ -266,10 +261,6 @@ export const Feed = () => {
     });
   });
 
-  // Printa todos os posts existentes na tela:
-
-
-  // Adição dos eventos dos botões:
   const postsContainer = rootElement.querySelector('.posts-container');
   // eslint-disable-next-line consistent-return
   postsContainer.addEventListener('click', (e) => {
@@ -289,7 +280,8 @@ export const Feed = () => {
       return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}"> </button>`;
     } return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}" hidden> </button>`;
   })(comment.owner)}
-              <button class="like-comment-btn" data-likeCommentButton="${comment.id}"> </button>    
+              <button class="like-comment-btn" data-likeCommentButton="${comment.id}"> </button> 
+            
             ${((quantityOfLikes) => {
     if (quantityOfLikes === 1) {
       return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtida </span> </p>`;
@@ -302,8 +294,6 @@ export const Feed = () => {
         commentArea.innerHTML += newItem;
       });
     };
-
-    //  Edit Post:
     const editButton = target.dataset.editpostbutton;
     if (editButton) {
       rootElement.querySelector(`[data-editPostButton="${postID}"]`).hidden = true;

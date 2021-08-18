@@ -1,4 +1,3 @@
-
 import { getTheRoad } from './lib/auth.js';
 import { Register } from './pages/register/register.js';
 import { Login } from './pages/login/login.js';

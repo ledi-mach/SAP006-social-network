@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { getTheRoad } from '../../lib/auth.js';
 import { getError } from '../../lib/errors.js';
 
@@ -7,6 +6,8 @@ export const updateUserProfile = (name, url) => {
   user.updateProfile({
     displayName: name,
     photoURL: url,
+  }).then(() => {
+    console.log('Perfil atualizado');
   }).catch((error) => {
     getError(error);
   });
