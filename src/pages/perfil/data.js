@@ -7,9 +7,6 @@ export const updateUserProfile = (name, url) => {
   user.updateProfile({
     displayName: name,
     photoURL: url,
-  }).then(() => {
-    console.log('Perfil atualizado');
-    console.log(url)
   }).catch((error) => {
     getError(error);
   });
@@ -38,4 +35,3 @@ export const showUserImage = (currentProfileImage) => {
 export const goBackToFeed = () => {
   getTheRoad('/feed');
 };
-
