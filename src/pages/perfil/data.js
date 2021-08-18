@@ -1,76 +1,67 @@
-/* eslint-disable no-param-reassign */
-import { getTheRoad } from '../../lib/auth.js';
-import { getError } from '../../lib/errors.js';
+import {
+  likePost, commentPost, showComments, likePostComment, deletePostComment,
+} from './services.js';
 
-export const updateUserProfile = (name, url) => {
-  const user = firebase.auth().currentUser;
-  user.updateProfile({
-    displayName: name,
-    photoURL: url,
-  }).then(() => {
-    console.log('Perfil atualizado');
-    console.log(url)
-  }).catch((error) => {
-    getError(error);
-  });
-};
-
-export const changeProfileImage = (photo, callback) => {
-  const file = photo.files[0];
-  const storageRef = firebase.storage().ref(`'imagens/' + ${file.name}`);
-  storageRef.put(file).then(() => {
-    storageRef.getDownloadURL().then((url) => {
-      callback(url);
-    });
-  });
-};
-
-export const showUserImage = (currentProfileImage) => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user != null) {
-      currentProfileImage.src = user.photoURL;
+export const updateLikes = async (postID, currentUserEmail, valueToBeChanged,
+  textToBeChanged, amountOfLikes) => {
+  likePost(postID, currentUserEmail);
+  const resultado = await likePost(postID, currentUserEmail);
+  if (resultado === 'like') {
+    const newAmountOflikes = amountOfLikes + 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = 'Curtida';
     } else {
-      currentProfileImage.src = '../../images/eye.png';
+      textToBeChanged.innerHTML = 'Curtidas';
     }
-  });
+  } else {
+    const newAmountOflikes = amountOfLikes - 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = 'Curtida';
+    } else {
+      textToBeChanged.innerHTML = 'Curtidas';
+    }
+  }
 };
 
-export const goBackToFeed = () => {
-  getTheRoad('/feed');
+export const getComments = async (postID, printComments) => {
+  const currentComments = await showComments(postID);
+  printComments(currentComments, postID);
+}; 
+
+export const getCurrentCommentsToComment = async (postID, newCommentText, currentUserEmail,
+  printComments) => {
+  commentPost(postID, newCommentText, currentUserEmail);
+  const currentComments = await commentPost(postID, newCommentText, currentUserEmail);
+  printComments(currentComments, postID);
 };
 
+export const getCurrentCommentLikes = async (postIDForComments, currentUserEmail, commentID,
+  valueToBeChanged, textToBeChanged, amountOfLikes) => {
+  likePostComment(postIDForComments, commentID, currentUserEmail);
+  const likeOrDeslike = await likePostComment(postIDForComments, commentID, currentUserEmail);
+  if (likeOrDeslike === 'like') {
+    const newAmountOflikes = amountOfLikes + 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = 'Curtida';
+    } else {
+      textToBeChanged.innerHTML = 'Curtidas';
+    }
+  } else {
+    const newAmountOflikes = amountOfLikes - 1;
+    valueToBeChanged.innerHTML = `${newAmountOflikes}`;
+    if (newAmountOflikes === 1) {
+      textToBeChanged.innerHTML = 'Curtida';
+    } else {
+      textToBeChanged.innerHTML = 'Curtidas';
+    }
+  }
+};
 
-
-/*import { getTheRoad } from "../../router.js";
-
-export const user = (nome, url) => {
-    const user = firebase.auth().currentUser;
-    user.updateProfile({
-      displayName: nome,
-      photoURL: url,
-    }).then(() => {
-      console.log('Perfil atualizado')
-      console.log(url)
-    }).catch((error) => {
-      console.log(error);
-    });
-  };
-  
-  export const perfilImage = (photo, callback) => {
-    const file = photo.files[0];
-    const storageRef = firebase.storage().ref('imagens/' + file.name);
-  
-    storageRef.put(file).then(() => {
-      storageRef.getDownloadURL().then((url) => {
-        callback(url);
-      });
-    });
-  };
-  
-  export const back = () => {
-    getTheRoad("/feed");
-  };
-  
-
-  
- */
+export const getCurrentCommentsToDelete = async (postIDForComments, commentID, printComments) => {
+  deletePostComment(postIDForComments, commentID);
+  const currentComments = await deletePostComment(postIDForComments, commentID);
+  printComments(currentComments, postIDForComments);
+};
