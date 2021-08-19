@@ -1,4 +1,16 @@
-import { logOut, loginWithGoogle, loginWithEmailAndPassword } from '../src/lib/ledi';
+import {
+  logOut,
+  loginWithGoogle,
+  loginWithEmailAndPassword,
+  updateUserProfile,
+  persisteAccount,
+  registerAccount,
+  createTemplatePost,
+  editPost,
+  likePost,
+  removeLikePost,
+}
+  from '../src/lib/ledi.js';
 
 describe('logOut', () => {
   it('should be a function', () => {
@@ -15,7 +27,7 @@ describe('LoginGoogle', () => {
     expect(typeof loginWithGoogle).toBe('function');
   });
   it('should call Firebase function', () => {
-    loginWithGoogle('user');
+    loginWithGoogle();
     expect(firebase.auth).toBeCalled();
   });
 });
@@ -24,8 +36,75 @@ describe('Login', () => {
   it('should be a function', () => {
     expect(typeof loginWithEmailAndPassword).toBe('function');
   });
+  it('should call firebase', () => {
+    loginWithEmailAndPassword('email', 'password');
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('updateUserProfile', () => {
+  it('should be a function', () => {
+    expect(typeof updateUserProfile).toBe('function');
+  });
   it('should call Firebase function', () => {
-    loginWithEmailAndPassword('email, password');
+    updateUserProfile('name, url');
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('Keep', () => {
+  it('should be a function', () => {
+    expect(typeof persisteAccount).toBe('function');
+  });
+  it('should call Firebase function', () => {
+    persisteAccount('');
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('creatTemplatePost', () => {
+  it('should be a function', () => {
+    expect(typeof createTemplatePost).toBe('function');
+  });
+  it('should call firebase', () => {
+    createTemplatePost();
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('registerAccount', () => {
+  it('should be a function', () => {
+    expect(typeof registerAccount).toBe('function');
+  });
+  it('should call firebase', () => {
+    registerAccount();
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('editPost', () => {
+  it('should be a function', () => {
+    expect(typeof editPost).toBe('function');
+  });
+  it('should call firebase', () => {
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('likePost', () => {
+  it('should be a function', () => {
+    expect(typeof likePost).toBe('function');
+  });
+  it('should call firebase', () => {
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('removeLikePost and like post', () => {
+  it('should be a function', () => {
+    expect(typeof removeLikePost).toBe('function');
+  });
+  it('should call firebase and dislike post', () => {
     expect(firebase.auth).toBeCalled();
   });
 });
