@@ -5,7 +5,7 @@ export const loginWithGoogle = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 
-export const loginWithEmailAndPassword = (email, password) => firebase
+export const loginWithEmailAndPassword = (email, password, checkbox = true) => firebase
   .auth().signInWithEmailAndPassword(email, password);
 
 export const updateUserProfile = (name, url) => {

@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import {
   logOut,
   loginWithGoogle,
@@ -11,6 +15,8 @@ import {
   removeLikePost,
 }
   from '../src/lib/ledi.js';
+
+import { Login } from '../src/pages/login/login.js';
 
 describe('logOut', () => {
   it('should be a function', () => {
@@ -106,5 +112,17 @@ describe('removeLikePost and like post', () => {
   });
   it('should call firebase and dislike post', () => {
     expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('loginPage', () => {
+  it('should render login page', () => {
+    const loginPage = Login();
+    console.log(loginPage);
+    loginPage.querySelector('#input-email').value = 'teste@teste.com';
+    loginPage.querySelector('#input-password').value = '12345678';
+    loginPage.querySelector('#btn-login').click();
+    expect(loginWithEmailAndPassword).toHaveBeenCalledTimes(1);
+    expect(loginWithEmailAndPassword).toHaveBeenCalledWith('teste@teste.com', '12345678');
   });
 });
