@@ -5,5 +5,15 @@ export const loginWithGoogle = () => {
   return firebase.auth().signInWithPopup(googleProvider);
 };
 
-export const loginWithEmailAndPassword = (email, password) => firebase
-  .auth().signInWithEmailAndPassword(email, password);
+export const loginWithEmailAndPassword = (email, pass) => firebase
+  .auth().signInWithEmailAndPassword(email, pass);
+
+export const updateUserProfile = (name, url) => {
+  firebase.auth().updateProfile({
+    displayName: name,
+    photoURL: url,
+  });
+};
+
+export const persisteAccount = () => firebase.auth()
+  .setPersistence();

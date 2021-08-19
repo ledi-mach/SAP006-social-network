@@ -1,4 +1,10 @@
-import { logOut, loginWithGoogle, loginWithEmailAndPassword } from '../src/lib/ledi';
+import {
+  logOut,
+  loginWithGoogle,
+  loginWithEmailAndPassword,
+  updateUserProfile,
+  persisteAccount,
+} from '../src/lib/ledi';
 
 describe('logOut', () => {
   it('should be a function', () => {
@@ -25,7 +31,27 @@ describe('Login', () => {
     expect(typeof loginWithEmailAndPassword).toBe('function');
   });
   it('should call Firebase function', () => {
-    loginWithEmailAndPassword('email, password');
+    loginWithEmailAndPassword('email, pass');
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('updateUserProfile', () => {
+  it('should be a function', () => {
+    expect(typeof updateUserProfile).toBe('function');
+  });
+  it('should call Firebase function', () => {
+    updateUserProfile('name, url');
+    expect(firebase.auth).toBeCalled();
+  });
+});
+
+describe('Keep', () => {
+  it('should be a function', () => {
+    expect(typeof persisteAccount).toBe('function');
+  });
+  it('should call Firebase function', () => {
+    persisteAccount('');
     expect(firebase.auth).toBeCalled();
   });
 });

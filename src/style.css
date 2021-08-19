@@ -17,13 +17,12 @@ body {
 }
 
 .login-container {
-  background-image: url("./images/testeee.jpg");
+  background-image: url("https://images.unsplash.com/photo-1516394399858-ae258cf724cc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .register-container {
-  background-image: url("./images/tesste.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 32vh;
@@ -273,7 +272,6 @@ form input[type="checkbox"] {
 
 .wrap {
   margin: 0 auto;
-  margin-top: -50px;
   margin-left: 15%;
   height: 140px;
   width: 50%;
@@ -433,7 +431,7 @@ form input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 150px;
   background-color: #025159;
   border-radius: 10px;
   width: 45%;
@@ -702,7 +700,24 @@ form input[type="checkbox"] {
 	list-style-type: none;
   }
   
+  .feed-search-input {
+    opacity: 0
+  }
   
+	.like-btn {
+	  cursor: pointer;
+	  background-image: url("https://i.pinimg.com/originals/01/d4/c1/01d4c11077fd54ccad1a6f32b3df3adf.png");
+	  background-size: 20px 20px;
+	  width: 20px;
+	  height: 20px;
+	  border-radius: 20px;
+	  border: none;
+	}
+	
+	.like-btn:focus {
+	  background-image: url("https://i.pinimg.com/originals/70/73/8e/70738e54de752d8e8ff690847b2dddfb.jpg");
+	}
+	
 
 /*FIM*/
 
