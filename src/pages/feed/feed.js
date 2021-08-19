@@ -76,7 +76,7 @@ export const Feed = () => {
           
           <input class="feed-hide-url" id="hide-url"> </input>
           <div class='share-area-buttons'>
-          <button id='publish-img-btn' class='circle violet'>📷</button>
+          <button id='publish-img-btn' class='publish-img-btn'></button>
           <div class='publish-img-form-box transparency'>
             <form method="post">
               <input type="file" id="image_uploads" class='share-area-img-btn' accept=".jpg, .jpeg, .png">
@@ -90,7 +90,6 @@ export const Feed = () => {
     </div>
   </main>
   `;
-  
   const showUrlOfImagesToPublish = (urlFile) => {
     rootElement.querySelector('#hide-url').value = `${urlFile}`;
   };
@@ -137,9 +136,13 @@ export const Feed = () => {
       const change = rootElement.querySelector('#all-container');
       const changeAside = rootElement.querySelector('aside');
       const changeFeed = rootElement.querySelector('.feed-left-section');
+      const postados = rootElement.querySelectorAll('.div-postados');
       change.style.background = 'rgb(30, 35, 41)';
       changeAside.style.background = 'rgb(19, 22, 26)';
       changeFeed.style.background = 'rgb(19, 22, 26)';
+      postados.forEach(element => {
+        element.style.background = 'rgb(19, 22, 26)';
+      });
     });
   };
   darkMode();
