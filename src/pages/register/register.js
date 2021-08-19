@@ -10,7 +10,7 @@ export const Register = () => {
     </header>
     <main>
       <div>
-        <img src="./images/logo-login.png"/>
+        <img class="img-logo" src="./images/logo-login.png"/>
       </div>
       <form>
         <div>

@@ -90,6 +90,7 @@ export const Feed = () => {
     </div>
   </main>
   `;
+  
   const showUrlOfImagesToPublish = (urlFile) => {
     rootElement.querySelector('#hide-url').value = `${urlFile}`;
   };
@@ -171,8 +172,7 @@ export const Feed = () => {
   })(post.data().url)}
           <section class="likes-comments-bar">
         
-          <section class="anim-like"id="anim-like" >
-          </section> 
+          <section class="anim-like"id="anim-like"></section> 
           <button class="like-btn" id="like-btn" data-likePostButton = "${post.id}"></button> 
             ${((quantityOfLikes) => {
     if (quantityOfLikes === 1) {
@@ -224,6 +224,7 @@ export const Feed = () => {
     const showheat = postElement.querySelector('#like-btn');
     showheat.addEventListener('click', () => {
       const element = postElement.querySelector('.anim-like'); element.style.opacity = 1;
+      const elementheart = postElement.querySelector('#like-btn'); elementheart.style.opacity = 0;
     });
     rootElement.querySelector('#postado').appendChild(postElement);
   }
