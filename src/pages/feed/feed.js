@@ -317,6 +317,7 @@ export const Feed = () => {
       loadPosts();
     }
 
+    // delete post com modal:
     if (target.dataset.item === 'deletepost') {
       const divConfirmDelete = target.parentNode.parentNode.children[7];
       const divConfirmDeleteModal = target.parentNode.parentNode.children[7]

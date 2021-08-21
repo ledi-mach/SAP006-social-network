@@ -15,8 +15,8 @@ export const Login = () => {
         <img src="./images/logo-login.png"/>
       </div>
       <form>
-        <div>
-          <input required type="email" id="input-email">
+        <div class="div-email" id="div-email">
+          <input required type="email" class="input-email" id="input-email">
           <label class="login-input-label" id="label-input-email">Email</label>
         </div>
         <div class="div-password" id="div-password">
@@ -33,7 +33,7 @@ export const Login = () => {
         <p class="transparent"> . </p>
       </div>
       <div class="login-btn-sig-log">
-        <button id="btn-login">ENTRAR</button>  
+        <button id="btn-login" class="btn-login">ENTRAR</button>  
         <button id="btn-sign-in">CADASTRAR</button>
       </div>
       <div class="login-additionals">
