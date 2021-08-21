@@ -1,5 +1,14 @@
 import { getError } from '../../lib/errors.js';
 
+export const addPost = (texto) => {
+  firebase.firestore().collection('posts').add({
+    text: texto,
+    url: 'sdsa',
+    likes: [],
+    comments: [],
+  });
+};
+
 export const getPosts = (createAndPrintAllPosts) => {
   firebase.firestore().collection('posts').orderBy('data', 'desc').get()
     .then((snap) => {

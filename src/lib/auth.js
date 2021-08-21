@@ -6,24 +6,12 @@ export const getTheRoad = (state) => {
   dispatchEvent(popstateEvent);
 };
 
-export const loginWithEmailAndPassword = (email, pass, checkbox) => {
-  if (checkbox.checked === true) {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
-      firebase.auth().signInWithEmailAndPassword(email, pass).then(() => {
-        getTheRoad('/feed');
-      }).catch((error) => {
-        getError(error);
-      });
-    });
-  } else {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).then(() => {
-      firebase.auth().signInWithEmailAndPassword(email, pass).then(() => {
-        getTheRoad('/feed');
-      }).catch((error) => {
-        getError(error);
-      });
-    });
-  }
+export const loginWithEmailAndPassword = (email, pass) => {
+  firebase.auth().signInWithEmailAndPassword(email, pass).then(() => {
+    getTheRoad('/feed');
+  }).catch((error) => {
+    getError(error);
+  });
 };
 
 export const loginWithGoogle = (checkbox) => {
@@ -47,7 +35,7 @@ export const loginWithGoogle = (checkbox) => {
   }
 };
 
-const updateProfileName = (name) => {
+export const updateProfileName = (name) => {
   firebase.auth().currentUser.updateProfile({ displayName: name });
 };
 
@@ -96,5 +84,3 @@ export const sendImageToDatabase = (file, showUrlOfImagesToPubish) => {
     });
   });
 };
-
-firebase.auth().languageCode = 'PT_br';

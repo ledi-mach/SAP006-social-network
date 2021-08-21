@@ -197,7 +197,6 @@ export const Feed = () => {
             <button class="show-comments-button" data-showComments = ${post.id}> Mostrar Comentarios </button>
             <ul data-commentPostUl="${post.id}"> </ul>
         </div>
-
         <div class="confirm-delete">
           <div class="modal-delete">
           <div class="h1-modal">Você tem certeza que quer excluir esse post?</div>
@@ -318,6 +317,7 @@ export const Feed = () => {
       loadPosts();
     }
 
+    // delete post com modal:
     if (target.dataset.item === 'deletepost') {
       const divConfirmDelete = target.parentNode.parentNode.children[7];
       const divConfirmDeleteModal = target.parentNode.parentNode.children[7]
