@@ -16,6 +16,8 @@ export const Feed = () => {
       <aside>  
         <section class='profile-area'>
           <div class='div-perfil'>
+            <img src='images/name-icon.png' class='feed-icon-aside'>
+            <br>
             <img src='imagens/user.png' id='photo' class='photo feed-user-photo'>
             <div class = "feed-welcome-user">
               <p> Bem vinda </p>
@@ -34,7 +36,7 @@ export const Feed = () => {
           </div>
           <div class="feed-settings">
             <img src="./images/dark-icon.png" alt="">
-            <button class="text-icon" id="button-dark"> Modo Escuro </button>
+            <button class="text-icon" id="button-dark"> Escuro </button>
           </div>
           <div class="feed-settings">
             <img src="./images/out-icon.png" alt="">
@@ -44,23 +46,20 @@ export const Feed = () => {
       </aside>
     </div>
     <div class="feed-right-section">
-      <form>
-        <input class="feed-search-input" placeholder="Busca"> </input>
-      </form>
       <div class="wrap">
   
       <div class="container-carousel">
       
-        <span id="previous"><i data-feather="chevron-left"> < </i></span>
-        <span id="next"><i data-feather="chevron-right">  > </i></span>
+        <span id="previous" class="slide-to-left"><i data-feather="chevron-left"> < </i></span>
+        <span id="next" class="slide-to-right"><i data-feather="chevron-right">  > </i></span>
         <div id="slider" class="slider">
         <a href="https://blog.bonitour.com.br/confira-os-4-melhores-lugares-para-praticar-mergulho-no-brasil/" target="_blank"> <img class="pictures" src="./images/stories/1.png"></img></a>
-        <img class="pictures" src="./images/stories/2.png"></img>
-        <img class="pictures" src="./images/stories/3.png"></img>
+        <a href="https://www.nattrip.com.br/blog/10-trekkings-no-brasil/" target="_blank"> <img class="pictures" src="./images/stories/2.png"></img></a>
+        <a href="https://www.feriasbrasil.com.br/especial/index.cfm?IDPagina=73" target="_blank"> <img class="pictures" src="./images/stories/3.png"></img></a>
         <a href="https://freesider.com.br/esportes-radicais/melhores-dicas-de-surf/" target="_blank"><img class="pictures" src="./images/stories/4.png"></img></a>
         <a href="https://apuamarafting.com.br/tudo-sobre-rapel-e-dica-de-roteiro/" target="_blank"><img class="pictures" src="./images/stories/5.png"></img></a>
         <a href="https://www.bluhome.com.br/blog/dicas/dicas-para-organizar-uma-viagem-de-motorhome" target="_blank"><img class="pictures" src="./images/stories/6.png"></img></a>
-        <img class="pictures" src="./images/stories/7.png"></img>
+        <a href="https://www.viajali.com.br/lugares-no-brasil-relaxar-nas-ferias/" target="_blank"><img class="pictures" src="./images/stories/7.png"></img></a>
         <a href="https://blog.caffeinearmy.com.br/mente/yoga-para-iniciantes-o-que-e-beneficios-e-dicas-para-comecar-hoje/" target="_blank"><img class="pictures" src="./images/stories/8.png"></img></a>
         <a href="https://medium.com/@itau/17-dicas-que-v%C3%A3o-facilitar-a-vida-de-qualquer-ciclista-iniciante-708428d4e079" target="_blank"><img class="pictures" src="./images/stories/9.png"></img></a>
         <a href="https://www.thule.com/pt-br/articles/tips/kayaking-for-beginners" target="_blank"><img class="pictures" src="./images/stories/10.png"></img>
@@ -71,19 +70,18 @@ export const Feed = () => {
     </div>
     
         <form action = "" id="postForm" class="publication-form">
-          <textarea class="feed-text-area" id='postText' placeholder='O que você quer compartilhar?'>
-          </textarea> 
-          
+          <textarea class="feed-text-area" id='postText' rows='15' placeholder='O que você quer compartilhar?'>
+        </textarea> 
           <input class="feed-hide-url" id="hide-url"> </input>
           <div class='share-area-buttons'>
-          <button id='publish-img-btn' class='circle violet'>📷</button>
-          <div class='publish-img-form-box transparency'>
+          <button id='publish-img-btn' class='publish-img-btn'></button>
+          <div class='publish-img-form-box'>
             <form method="post">
               <input type="file" id="image_uploads" class='share-area-img-btn' accept=".jpg, .jpeg, .png">
              </form>
           </div>
          
-          <button id='publicar'>Publicar</button>
+          <button id='publicar' class='btn-form'>PUBLICAR</button>
         </form>
       </div>
       <section id='postado' class='posts-container'> </section>

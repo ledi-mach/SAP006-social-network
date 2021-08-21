@@ -3,7 +3,7 @@ export const getError = (error) => {
     { code: 'auth/email-already-exists', message: 'Este e-mail já existe.' },
     { code: 'auth/email-already-in-use', message: 'Este email já está em uso.' },
     { code: 'auth/credential-already-in-use', message: 'Esta credencial já está em uso.' },
-    { code: 'auth/wrong-password', message: 'Senha incorreta.' },
+    { code: 'auth/wrong-password', message: 'Verifique seus dados.' },
     { code: 'auth/invalid-email', message: 'Email inválido.' },
     { code: 'auth/user-not-found', message: 'Usuário não encontrado.' },
     { code: 'auth/user-disabled', message: 'Esta conta foi desativada.' },
@@ -31,7 +31,7 @@ export const getError = (error) => {
         break;
       case errorResulted[0].code.includes('password'):
         containerPassword.classList.add('login-input-has-an-error');
-        containerEmail.classList.remove('login-input-has-an-error');
+        containerEmail.classList.add('login-input-has-an-error');
         break;
       default:
         containerPassword.classList.remove('login-input-has-an-error');
