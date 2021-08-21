@@ -1,3 +1,5 @@
+/*stylelint-disable no-descending-specificity*/
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body {
   width: 100%;
@@ -194,7 +196,6 @@ form input[type="checkbox"] {
 /* Feed */
 .all-container {
   flex-direction: column;
-  font-family: "Roboto";
   color: #025159;
 }
 
@@ -251,7 +252,6 @@ form input[type="checkbox"] {
   color: #666666;
   border: none;
   background-color: transparent;
-  font-family: "Roboto";
   font-size: 95%;
   cursor: pointer;
 }
@@ -371,7 +371,6 @@ form input[type="checkbox"] {
   min-height: 120px;
   margin-top: 10px;
   background-color: white;
-  border-radius: 10px;
   border: 1px solid #9dd8df;
 }
 .user-post {
@@ -682,6 +681,7 @@ form input[type="checkbox"] {
   margin-top: -350px;
   margin-left: -125px;
 }
+
 
 .modal-delete button:hover {
   background-color: whitesmoke;

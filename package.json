@@ -21,6 +21,11 @@
   "engines": {
     "node": ">=10"
   },
+  "jest": {
+    "setupFiles": [
+      "./jestSetup.js"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
