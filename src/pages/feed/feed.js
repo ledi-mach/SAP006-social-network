@@ -188,11 +188,11 @@ export const Feed = () => {
                 <span data-like-text-to-be-changed="${post.id}">Curtidas </span> 
               </p>`;
   })(post.data().likes.length)}
+            <button type="submit" data-showCommentsDiv="${post.id}" class="btn-show-comments-div"></button>
           </section>
-          <div class="comments">
-            <input required data-commentPostInput="${post.id}" placeholder='O que você quer comentar?'></input>
+          <div class="comments" data-commentsDiv="${post.id}">
+            <input required data-commentPostInput="${post.id}" placeholder='O que você quer comentar?' class="input-comment"></input>
             <button class="comment-button" data-commentPostButton="${post.id}"> Comentar </button> 
-            <button class="show-comments-button" data-showComments = ${post.id}> Mostrar Comentarios </button>
             <ul data-commentPostUl="${post.id}"> </ul>
         </div>
         <div class="confirm-delete">
@@ -229,15 +229,16 @@ export const Feed = () => {
     getPosts(createAndPrintAllPosts);
   }
 
+  const postData = () => {
+    const data = new Date();
+    return data.toLocaleString('pt-BR');
+  };
+
   rootElement.querySelector('#postForm').addEventListener('submit', (event) => {
     event.preventDefault();
     const postText = rootElement.querySelector('#postText');
     const text = rootElement.querySelector('#postText').value;
     const url = rootElement.querySelector('#hide-url').value;
-    const postData = () => {
-      const data = new Date();
-      return data.toLocaleString('pt-BR');
-    };
 
     const post = {
       text,
@@ -270,7 +271,7 @@ export const Feed = () => {
       commentsToPrint.forEach((comment) => {
         const newItem = `
             <li class="comment-f-20" id="${comment.id}">
-              <p class="comment-owner"> ${comment.owner} </p>
+              <p class="comment-owner"> ${comment.owner} comentou em ${comment.date}: </p>
               <p class="comment-content"> ${comment.content}</p>
               ${((user) => {
     if (user === currentUserEmail) {
@@ -287,6 +288,7 @@ export const Feed = () => {
     }
     return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`;
   })(comment.commentLikes.length)}
+  <hr class="comments-division">
             `;
         commentArea.innerHTML += newItem;
       });
@@ -342,9 +344,10 @@ export const Feed = () => {
       updateLikes(postID, currentUserEmail, valueToBeChanged, textToBeChanged, amountOfLikes);
     }
 
-    //  Show Post Comments:
-    const showCommentsButton = target.dataset.showcomments;
-    if (showCommentsButton) {
+    // Show Post Comments Div:
+    const showCommentsDivButton = target.dataset.showcommentsdiv;
+    if (showCommentsDivButton) {
+      rootElement.querySelector(`[data-commentsDiv="${postID}"]`).style.display = 'block';
       getComments(postID, printComments);
     }
 
