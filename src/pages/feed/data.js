@@ -3,22 +3,26 @@ import {
 } from './services.js';
 
 export const updateLikes = async (postID, currentUserEmail, valueToBeChanged,
-  textToBeChanged, amountOfLikes) => {
+  textToBeChanged, amountOfLikes, likeStatus) => {
   likePost(postID, currentUserEmail);
   const resultado = await likePost(postID, currentUserEmail);
   if (resultado === 'like') {
+    likeStatus.classList.remove('empty-like-btn');
+    likeStatus.classList.add('full-like-btn');
     const newAmountOflikes = amountOfLikes + 1;
     valueToBeChanged.innerHTML = `${newAmountOflikes}`;
     if (newAmountOflikes === 1) {
-      textToBeChanged.innerHTML = 'Curtida';
+      textToBeChanged.innerHTML = 'Curtida ';
     } else {
       textToBeChanged.innerHTML = 'Curtidas';
     }
   } else {
+    likeStatus.classList.remove('full-like-btn');
+    likeStatus.classList.add('empty-like-btn');
     const newAmountOflikes = amountOfLikes - 1;
     valueToBeChanged.innerHTML = `${newAmountOflikes}`;
     if (newAmountOflikes === 1) {
-      textToBeChanged.innerHTML = 'Curtida';
+      textToBeChanged.innerHTML = 'Curtida ';
     } else {
       textToBeChanged.innerHTML = 'Curtidas';
     }
@@ -38,22 +42,26 @@ export const getCurrentCommentsToComment = async (postID, newCommentText, curren
 };
 
 export const getCurrentCommentLikes = async (postIDForComments, currentUserEmail, commentID,
-  valueToBeChanged, textToBeChanged, amountOfLikes) => {
+  valueToBeChanged, textToBeChanged, amountOfLikes, likeStatus) => {
   likePostComment(postIDForComments, commentID, currentUserEmail);
   const likeOrDeslike = await likePostComment(postIDForComments, commentID, currentUserEmail);
   if (likeOrDeslike === 'like') {
+    likeStatus.classList.remove('empty-like-btn');
+    likeStatus.classList.add('full-like-btn');
     const newAmountOflikes = amountOfLikes + 1;
     valueToBeChanged.innerHTML = `${newAmountOflikes}`;
     if (newAmountOflikes === 1) {
-      textToBeChanged.innerHTML = 'Curtida';
+      textToBeChanged.innerHTML = 'Curtida ';
     } else {
       textToBeChanged.innerHTML = 'Curtidas';
     }
   } else {
+    likeStatus.classList.remove('full-like-btn');
+    likeStatus.classList.add('empty-like-btn');
     const newAmountOflikes = amountOfLikes - 1;
     valueToBeChanged.innerHTML = `${newAmountOflikes}`;
     if (newAmountOflikes === 1) {
-      textToBeChanged.innerHTML = 'Curtida';
+      textToBeChanged.innerHTML = 'Curtida ';
     } else {
       textToBeChanged.innerHTML = 'Curtidas';
     }
