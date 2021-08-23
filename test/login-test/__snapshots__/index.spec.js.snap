@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render página de login carrega a página 1`] = `
+<div
+  class="login-container"
+>
+  
+  
+  <section
+    class="login-left-section"
+  >
+    
+    
+    <header>
+      
+      
+      <a>
+        Sobre nós
+      </a>
+      
+    
+    </header>
+    
+    
+    <main>
+      
+      
+      <div>
+        
+        
+        <img
+          src="./images/logo-login.png"
+        />
+        
+      
+      </div>
+      
+      
+      <form>
+        
+        
+        <div
+          class="div-email"
+          id="div-email"
+        >
+          
+          
+          <input
+            class="input-email"
+            id="input-email"
+            required=""
+            type="email"
+          />
+          
+          
+          <label
+            class="login-input-label"
+            id="label-input-email"
+          >
+            Email
+          </label>
+          
+        
+        </div>
+        
+        
+        <div
+          class="div-password"
+          id="div-password"
+        >
+          
+          
+          <input
+            class="input-password"
+            id="input-password"
+            required=""
+            type="password"
+          />
+          
+            
+          <img
+            class="eye"
+            id="eye"
+            src="./images/eye-off.png"
+          />
+          
+            
+          <label
+            class="login-input-label"
+          >
+            Senha
+          </label>
+           
+          
+          <br />
+          
+          
+          <label
+            class="checkbox-keep-logged-in"
+          >
+             Mantenha-me logadex
+            
+            <input
+              id="checkbox-keep-logged-in"
+              type="checkbox"
+            />
+            
+          
+          </label>
+          
+        
+        </div>
+        
+      
+      </form>
+      
+      
+      <div
+        class="login-error-div"
+        id="print-error-here"
+      >
+         
+        
+        <p
+          class="transparent"
+        >
+           . 
+        </p>
+        
+      
+      </div>
+      
+      
+      <div
+        class="login-btn-sig-log"
+      >
+        
+        
+        <button
+          class="btn-login"
+          id="btn-login"
+        >
+          ENTRAR
+        </button>
+          
+        
+        <button
+          id="btn-sign-in"
+        >
+          CADASTRAR
+        </button>
+        
+      
+      </div>
+      
+      
+      <div
+        class="login-additionals"
+      >
+        
+        
+        <button
+          id="btn-login-with-google"
+        >
+           Ou conecte-se com o gmail
+        </button>
+        
+        
+        <br />
+        
+        
+        <button
+          id="btn-forgot-password"
+        >
+           Esqueceu a senha?
+        </button>
+        
+      
+      </div>
+      
+    
+    </main>
+    
+    
+    <footer>
+       Willing © 2021
+    </footer>
+    
+  
+  </section>
+   
+  
+</div>
+`;
