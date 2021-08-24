@@ -11,8 +11,9 @@ export const Feed = () => {
   const rootElement = document.createElement('div');
   rootElement.className = 'feed-container';
   rootElement.innerHTML = `
+
   <main class="all-container" id="all-container">
-    <div class="feed-left-section">
+    <div class="feed-left-section" id="feed-left">
       <aside>  
         <section class='profile-area'>
           <div class='div-perfil'>
@@ -73,8 +74,7 @@ export const Feed = () => {
           <textarea class="feed-text-area" id='postText' rows='15' placeholder='O que você quer compartilhar?'></textarea> 
           <input class="feed-hide-url" id="hide-url"> </input>
           <div class='share-area-buttons'>
-          <button id='publish-img-btn' class='publish-img-btn'>
-          </button>
+          <button id='publish-img-btn' class='publish-img-btn'></button>
           <div class='publish-img-form-box'>
             <form method="post">
               <input type="file" id="image_uploads" class='share-area-img-btn' accept=".jpg, .jpeg, .png">
@@ -97,7 +97,7 @@ export const Feed = () => {
     rootElement.querySelector('#image_uploads').onchange = (event) => {
       sendImageToDatabase(event.target.files[0], showUrlOfImagesToPublish);
       rootElement.querySelector('.publish-img-form-box').style.opacity = 0;
-      rootElement.querySelector('#postText').placeholder = 'Imagem carregada! Digite o seu texto...';
+      rootElement.querySelector('#postText').placeholder = 'Imagem carregada. Digite o seu texto...';
     };
   };
 
@@ -129,14 +129,21 @@ export const Feed = () => {
     }
   });
 
+  function clickDarkLight() {
+    const body = rootElement.querySelector('main');
+    const currentClass = body.className;
+    body.className = currentClass === 'dark-mode' ? 'light-mode' : 'dark-mode';
+    const aside = rootElement.querySelector('aside');
+    const currentClassAside = aside.className;
+    aside.className = currentClassAside === 'dark-mode' ? 'light-mode' : 'dark-mode';
+    const feedSection = rootElement.querySelector('#feed-left');
+    const currentClassSection = feedSection.className;
+    feedSection.className = currentClassSection === 'dark-mode' ? 'light-mode' : 'dark-mode';
+  }
+
   const darkMode = () => {
     rootElement.querySelector('#button-dark').addEventListener('click', () => {
-      const change = rootElement.querySelector('#all-container');
-      const changeAside = rootElement.querySelector('aside');
-      const changeFeed = rootElement.querySelector('.feed-left-section');
-      change.style.background = 'rgb(30, 35, 41)';
-      changeAside.style.background = 'rgb(19, 22, 26)';
-      changeFeed.style.background = 'rgb(19, 22, 26)';
+      clickDarkLight();
     });
   };
   darkMode();

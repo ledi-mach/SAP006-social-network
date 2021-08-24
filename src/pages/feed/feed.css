@@ -622,3 +622,42 @@
 .like-comment-value {
   font-size: 90%;
 }
+
+
+main.dark-mode {
+  background-color:  rgb(30, 35, 41);
+}
+
+main.light-mode {
+  background-color: #edeae5;;
+}
+
+
+aside.dark-mode {
+    background-color: #111;
+ 
+  }
+  
+aside.light-mode {
+    background-color: rgb(182, 179, 179);
+
+  }
+  
+
+ #feed-left.dark-mode {
+    width: 20%;
+    height: 100vh;
+    padding: 5% 0%;
+    position: fixed;
+    background-color: #111;
+ 
+  }
+  
+#feed-left.light-mode {
+    width: 20%;
+    height: 100vh;
+    padding: 5% 0%;
+    position: fixed;
+    background-color: rgb(182, 179, 179);
+  }
+  
