@@ -1,0 +1,31 @@
+
+.register-container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 32vh;
+}
+
+@media screen and (max-width: 1024px) {
+  .register-container{
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .register-container input[type="checkbox"]{
+    margin-left: 10%;
+    top:86%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .register-container input[type="checkbox"]{
+    margin-left: 13%;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .register-container input[type="checkbox"]{
+    margin-left: 17%;
+  }
+}
