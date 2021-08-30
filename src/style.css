@@ -2,32 +2,27 @@
 @import url("./pages/login/login.css");
 @import url("./pages/register/register.css");
 @import url("./pages/feed/feed.css");
+@import url("./pages/perfil/profile.css");
 
 
-:root {
-  --button-color: #025159;
-  --bg--color: #edeae5;
+*{
+  background-color: transparent;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #025159;
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
   margin: 0%;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  color: #025159;
-  background-color: #edeae5;
 }
 
-.btn-profile-edit button {
-  font-family: 'Roboto', sans-serif;
-  cursor: pointer;
-  border-radius: 25px;
-  height: 32px;
-  background-color: #025159;
-  color: white;
-  width: 30%;
-  padding: 2% 2%;
-  margin-bottom: 10%;
-  border: solid 0pt;
+:root {
+  --button-color: #025159;
+  --bg--color: #edeae5;
 }
 
 
@@ -38,5 +33,3 @@ body {
   color: white;
   border-radius: 25px;
 }
-
-/*FIM*/
