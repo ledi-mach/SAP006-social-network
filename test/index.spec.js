@@ -1,9 +1,9 @@
 /**
 * @jest-environment jsdom
 */
-import * as auth from '../../src/lib/auth.js';
-import { Login } from '../../src/pages/login/login.js';
-import { Register } from '../../src/pages/register/register.js';
+import * as auth from '../src/lib/auth.js';
+import { Login } from '../src/pages/login/login.js';
+import { Register } from '../src/pages/register/register.js';
 import {
   loginWithGoogle,
   loginWithEmailAndPassword,
@@ -11,7 +11,7 @@ import {
   resetPassword,
   getTheRoad,
 }
-  from '../../src/lib/auth.js';
+  from '../src/lib/auth.js';
 
 jest.mock('../src/lib/auth.js');
 
