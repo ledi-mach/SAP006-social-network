@@ -29,6 +29,15 @@
   align-items: center;
   padding: 2% 2% 2% 2%;
 }
+
+.btn-profile-edit button,
+.change-name input {
+  font-size: 110%;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(10, 54, 37, 0.4);
+  align-items: center;
+}
+
 .profile-edit button:hover {
   transform: translateX(-2px);
   box-shadow: 0 4px 30px rgba(10, 54, 37, 0.95);
@@ -70,13 +79,7 @@
   justify-content: start;
 }
 
-.btn-profile-edit button,
-.change-name input {
-  font-size: 110%;
-  font-weight: 500;
-  box-shadow: 0 4px 20px rgba(10, 54, 37, 0.4);
-  align-items: center;
-}
+
 
 .btn-profile-edit {
   margin-top: 3%;
@@ -269,6 +272,7 @@
 @media screen and (max-width: 280px){
   .div-profile form{
     height: 70vh;
+    margin-top: 40%;
   }
 
   .img-logo-profile{
@@ -276,7 +280,4 @@
     width: 100%;
   }
 
-  .div-profile form{
-    margin-top: 40%;
-  }
 }

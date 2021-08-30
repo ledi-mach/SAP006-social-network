@@ -1,7 +1,4 @@
-:root {
-  --error-color: #ff3333;
-  --button-color: #025159;
-}
+
 
 .checkbox-keep-logged-in {
   font-size: 90% !important;
@@ -85,6 +82,15 @@
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0) !important;
 }
 
+.button-submit button {
+  width: 15%;
+  padding: 2% 0%;
+  background-color: #025159;
+  color: white;
+  border-radius: 25px;
+}
+
+
 .login-left-section button:hover {
   transform: translateX(-2px);
 }
@@ -155,13 +161,6 @@ form input[type="checkbox"] {
   font-size: 80%;
 }
 
-.button-submit button {
-  width: 15%;
-  padding: 2% 0%;
-  background-color: #025159;
-  color: white;
-  border-radius: 25px;
-}
 
 
 @media screen and (max-width: 1024px) {

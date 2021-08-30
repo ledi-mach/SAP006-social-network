@@ -26,6 +26,8 @@ body {
 :root {
   --button-color: #025159;
   --bg--color: #edeae5;
+  --error-color: #ff3333;
+  --color-feed: #025159;
 }
 
 
@@ -36,8 +38,5 @@ body {
   color: white;
   border-radius: 25px;
 }
-:root {
-  --color-feed: #025159;
-  --bg--color: #edeae5;
-}
+
 

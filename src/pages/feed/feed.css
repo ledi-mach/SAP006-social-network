@@ -562,7 +562,7 @@ main.dark-mode {
 }
 
 main.light-mode {
-  background-color: #edeae5;;
+  background-color: #edeae5;
 }
 
 aside.dark-mode {
@@ -734,9 +734,6 @@ aside.light-mode {
     width: 16vh;
   }
 
-  .feed-settings{
-    margin: 5% 4% 3% 5%;
-  }
   
   .feed-settings-container{
     margin-left: 29%;
@@ -760,16 +757,13 @@ aside.light-mode {
     width: 13vh;
   }
 
-  .feed-settings-container{
-    margin-left: 27%;
-  }
-
   .feed-settings{
     margin: 5% 0% 3% 7%;
   }
 
   .feed-settings-container{
     height: 8vh;
+    margin-left: 27%;
   }
 
   .feed-settings button{
