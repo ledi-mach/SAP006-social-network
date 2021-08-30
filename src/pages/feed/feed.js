@@ -117,12 +117,15 @@ export const Feed = () => {
   const photoPerfil = rootElement.querySelector('.photo');
   const nomeP = rootElement.querySelector('.name-user');
   firebase.auth().onAuthStateChanged((user) => {
-    if (user != null) {
+    if (user !== null) {
       nomeP.innerHTML = user.displayName;
       photoPerfil.src = user.photoURL;
+      if (user.photoURL !== null) {
+        photoPerfil.src = user.photoURL;
+      }
+      photoPerfil.src = 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png';
     } else {
       nomeP.innerHTML = user.email;
-      photoPerfil.src = 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png';
     }
   });
 
