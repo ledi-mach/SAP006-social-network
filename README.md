@@ -9,7 +9,8 @@ Recebemos da Laboratoria o desafio de criar uma rede social que abordasse um tem
 A Willing é uma rede social voltada para entretenimento e troca de experiências entre entusiastas de atividades outdoor, desde atividades mais básicas como caminhadas até viagens compartilhadas e/ou mochilões.
 
 ## Planejamento e desenvolvimento
-...
+![img](./src/images/planejamento.jpeg)
+
 ## Histórias de usuário
 Com base no levantamento das informações obtidas, desenvolvemos quatro histórias de usuário para guiar o desenvolvimento do projeto.
 
