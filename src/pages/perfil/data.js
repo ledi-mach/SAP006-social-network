@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { getTheRoad } from '../../lib/auth.js';
 import { getError } from '../../lib/errors.js';
 
