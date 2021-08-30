@@ -13,7 +13,7 @@ A Willing é uma rede social voltada para entretenimento e troca de experiência
 ## Histórias de usuário
 Com base no levantamento das informações obtidas, desenvolvemos quatro histórias de usuário para guiar o desenvolvimento do projeto.
 
-![Histórias de usuário](https://mail.google.com/mail/u/0?ui=2&ik=c9a6e7c632&attid=0.1&permmsgid=msg-a:r-2210270220641807281&th=17b750191517aadd&view=att&disp=safe&realattid=f_ksp6f6on0)
+![img](./src/images/historiasDeUsuario.jpeg)
 ### Soluções de pronto e critérios de aceitação:
 História 1: A página inicial deverá ter botões que intuitivamente orientem o usuário para logar com email e senha, 
 cadastrar novo usuário  e login pelo Google.
@@ -26,8 +26,6 @@ História 2: A página de feed terá local para compartilhar textos, tanto na fo
 História 3: Nos posts, os usuários também deverão conseguir postar imagens, tanto acompanhadas de texto quanto sem.
 
 História 4: Os usuários devem poder curtir os posts de outros usuários e poder fazê-lo uma única vez.
-
-![alt text](./images/historiasDeUsuario.jpeg)
 
 ## Protótipo
 
