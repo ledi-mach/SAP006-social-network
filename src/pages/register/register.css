@@ -16,6 +16,10 @@
     margin-left: 10%;
     top:86%;
   }
+
+  .login-btn-sig-log button{
+    padding:3%
+  }
 }
 
 @media screen and (max-width: 320px) {

@@ -1,21 +1,4 @@
-:root {
-  --color-feed: #025159;
-  --bg--color: #edeae5;
-}
 
-.btn-profile-edit button {
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
-  border-radius: 25px;
-  height: 15%;
-  background-color: #025159;
-  align-items: center;
-  color: white;
-  width: 30%;
-  padding: 2% 2% 3% 2%;
-  margin-bottom: 10%;
-  border: solid 0pt;
-}
 /* Feed */
 .all-container {
   flex-direction: column;
@@ -43,6 +26,10 @@
   width: 85%;
 }
 
+.feed-icon-aside-bottom{
+  display: none;
+}
+
 .feed-welcome-user {
   color: #404040;
   font-size: 110%;
@@ -62,29 +49,47 @@
 }
 
 .feed-settings-container {
-  margin-top: 10%;
+  margin-top: -7%;
+  margin-bottom: 5%;
+  height: 10vh;
   display: flex;
   flex-direction: column;
 }
 
 .feed-settings {
-  margin-top: -6%;
-  margin-left: 19%;
-  display: flex;
+  margin-top: 12%;
+  flex-direction: row;
+  justify-content: center;
+  
 }
 
-.feed-settings img {
-  width: 25px;
-  height: 25px;
-  margin: 25px;
+.feed-settings span{
+  margin-left: 170%;
+  color: #666666;
 }
 
 .feed-settings button {
   font-size: 100%;
-  color: #666666;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+  background-size:cover;
+  height: 4.5vh;
+  width: 4.5vh;
+  margin-left:-50%;
+}
+
+.home-icon{
+  background-image: url('./../../images/home-icon.png');
+}
+
+.perfil-icon{
+  background-image: url('./../../images/config-icon.png');
+}
+
+.dark-icon{
+  background-image: url('./../../images/dark-icon.png');
+}
+
+.singout-icon{
+  background-image: url('./../../images/out-icon.png');
 }
 
 .modal-delete button {
@@ -165,7 +170,6 @@
 }
 
 .feed-text-area {
-  font-family: "Roboto", sans-serif;
   font-size: 110%;
   color: #025159;
   width: 90%;
@@ -198,6 +202,7 @@
   font-weight: 500;
   font-size: 85%;
 }
+
 .btn-form:hover {
   cursor: pointer;
 }
@@ -224,7 +229,8 @@
     border-radius: 8px;
     border: #025159 solid 1pt;
     margin-left: 3%;
-  }
+}
+
 .posts-container {
   width: 100%;
   margin-top: 5%;
@@ -255,7 +261,6 @@
   padding: 1%;
   border-radius: 5px 5px 0px 0px;
 }
-
 
 .user-data-post {
   width: 60%;
@@ -306,13 +311,13 @@
   cursor: pointer;
   background-image: url("/images/trash-img.png");
   background-color: transparent;
- 
   background-size: 30px 30px;
   width: 30px;
   height: 30px;
   border-radius: 25px;
   border: none;
 }
+
 .delete-button:hover {
     cursor: pointer;
     background-image: url("/images/trash.gif");
@@ -323,7 +328,7 @@
     height: 30px;
     border-radius: 25px;
     border: none;
-  }
+}
 
 .btn-edit {
   margin-top: 2%;
@@ -336,6 +341,7 @@
   height: 30px;
   border: none;
 }
+
 .btn-edit:hover {
     margin-top: 2%;
     cursor: pointer;
@@ -346,13 +352,6 @@
     width: 30px;
     height: 30px;
     border: none;
-  }
-
-.div-password img {
-  width: 18px;
-  position: absolute;
-  margin-left: -30px;
-  margin-top: 10px;
 }
 
 .f-20 {
@@ -423,7 +422,6 @@
   border: red, solid, 2pt;
 }
 
-
 /*ATÉ AQUI*/
 #curtir {
   cursor: pointer;
@@ -460,6 +458,7 @@
   z-index: 3;
   display: none;
 }
+
 .modal-delete {
   text-align: center;
   width: 300px;
@@ -484,6 +483,7 @@
   font-weight: 500;
   margin-bottom: 8%;
 }
+
 .img-po {
   max-width: 420px;
   max-height: 420px;
@@ -511,15 +511,15 @@
   background-color: transparent;
   cursor: pointer;
 }
+
 .empty-like-btn {
  background-image: url("/images/green-like.png");
 }
+
 .empty-like-btn:hover {
     background-image: url("/images/empty-like.gif");
+}
    
-   }
-   
-
 .full-like-btn {
   background-image: url("/images/like-btn.png");
 }
@@ -557,7 +557,6 @@
   font-size: 90%;
 }
 
-
 main.dark-mode {
   background-color:  rgb(30, 35, 41);
 }
@@ -565,7 +564,6 @@ main.dark-mode {
 main.light-mode {
   background-color: #edeae5;;
 }
-
 
 aside.dark-mode {
     background-color: #111;
@@ -577,7 +575,6 @@ aside.light-mode {
 
   }
   
-
  #feed-left.dark-mode {
     width: 20%;
     height: 100vh;
@@ -594,3 +591,163 @@ aside.light-mode {
     position: fixed;
     background-color: rgb(182, 179, 179);
   }
+
+@media screen and (max-width: 1024px) {
+  .feed-settings-container {
+    flex-direction: row;
+    background-color: #ffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 11vh;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-top:rgb(182, 179, 179, 0.7) solid 1pt;
+    margin-left: 20%;
+    margin-bottom: 0%;
+    z-index: -1;
+  }
+
+  .feed-settings{
+    flex-direction: column;
+    margin: 5% 8% 0% 7%;
+    padding-bottom: 3%;
+  }
+
+  .feed-settings span{
+    display: none;
+  }
+
+  .feed-settings button{
+    height: 4.5vh;
+    width: 4.5vh;
+  }
+
+  .feed-left-section {
+    height: 13vh;
+    width: 16vh;
+    border-top-left-radius: 110px; 
+    border-top-right-radius: 110px;
+    position: fixed;
+    background-color: transparent;
+    bottom: 0;
+    margin-bottom: 0%;
+    border-top: gray solid 1pt;
+    z-index: 10;
+  }
+
+  .feed-icon-aside-bottom {
+    display: block;
+    height: 4vh;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 1%;
+  }
+
+  .feed-icon-aside-up{
+    display: none;
+  }
+
+  .feed-user-photo{
+    margin-top: -21%;
+  }
+
+  .feed-welcome-user{
+    display: none;
+  }
+
+  .feed-right-section{
+    width: 100%;
+    margin: auto;
+  }
+
+  .wrap {
+    margin: 2% auto;
+    height: 11vh;
+    width: 86%;
+  }
+  
+  .pictures {
+    height: 10vh;
+    width: 10vh;
+  }
+
+  .slide-to-left, .slide-to-right{
+    top: calc(5%);
+    left: 2%;
+  }
+
+  .slide-to-right{
+    right: 2%;
+    left: unset;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .wrap{
+    width: 80%;
+  }
+
+  .feed-left-section {
+    height: 13vh;
+    width: 20vh;
+  }
+
+  .feed-icon-aside-bottom{
+    display: none;
+  }
+
+  .feed-settings{
+    margin: 5% 4% 3% 10%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .feed-user-photo{
+    width: 120px;
+    height: 120px;
+  }
+  .feed-left-section{
+    height: 12vh;
+  }
+
+  .slide-to-left, .slide-to-right{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .feed-user-photo{
+    width: 14vh;
+    height: 14vh;
+    margin-top: -26%;
+  }
+
+  .feed-left-section{
+    height: 10vh;
+    width: 17vh;
+  }
+
+  .feed-settings{
+    margin: 5% 4% 3% 5%;
+  }
+  
+  .feed-settings-container{
+    margin-left: 27%;
+  }
+
+  .feed-settings{
+    margin: 5% 0% 3% 9%;
+  }
+
+}
+
+@media screen and (max-width: 280px) {
+  .feed-user-photo{
+    width: 12vh;
+    height: 12vh;
+  }
+
+}
+

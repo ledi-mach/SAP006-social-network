@@ -16,9 +16,10 @@ export const Feed = () => {
       <aside>  
         <section class='profile-area'>
           <div class='div-perfil'>
-            <img src='images/name-icon.png' class='feed-icon-aside'>
+            <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-up'>
             <br>
             <img src='imagens/user.png' id='photo' class='photo feed-user-photo'>
+            <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-bottom'>
             <div class = "feed-welcome-user">
               <p> Bem vinda </p>
               <p class='name-user' id="name-user"></p> 
@@ -27,20 +28,16 @@ export const Feed = () => {
         </section>
         <div class="feed-settings-container">
           <div class="feed-settings">
-            <img src="./images/home-icon.png" alt="">
-            <button class="text-icon" id=""> Início </button>
+            <button class="text-icon home-icon" id=""><span>Home</span></button>
           </div>
           <div class="feed-settings">
-            <img src="./images/config-icon.png" alt="">
-            <button class="perfil-icon text-icon" id="perfil-icon"> Perfil </button>
+            <button class="perfil-icon text-icon" id="perfil-icon"><span>Configurações</span></button>
           </div>
           <div class="feed-settings">
-            <img src="./images/dark-icon.png" alt="">
-            <button class="text-icon" id="button-dark"> Escuro </button>
+            <button class="text-icon dark-icon" id="button-dark"><span>Escuro</span></button>
           </div>
           <div class="feed-settings">
-            <img src="./images/out-icon.png" alt="">
-            <button class="text-icon" id="button-signout"> Sair </button>
+            <button class="text-icon singout-icon" id="button-signout"><span>Sair</span></button>
           </div>
         </div>
       </aside>
