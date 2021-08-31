@@ -719,6 +719,38 @@ aside.light-mode {
   .btn-form {
     margin-left: 50%;
   }
+  
+  .delete-button {
+    position: absolute;
+    margin-top: -20px;
+    right: 130px;
+  }
+  .btn-show-comments-div {
+    background-size: 20px 20px;
+    width: 30px;
+    height: 30px;
+    margin-left: 58%;
+
+  }
+ .like-btn {
+    margin-top: 1.5%;
+    margin-right: 1.5%;
+    margin-left: 1%;
+    background-size: 20px 20px;
+
+    width: 20px;
+    height: 20px;
+  }
+    
+.btn-edit {
+  position: absolute;
+  margin-top: -20px;
+  right: 90px;
+}
+.f-20 {
+  font-size: 10pt;
+}
+
 }
 
 @media screen and (max-width: 411px) {
