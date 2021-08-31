@@ -67,8 +67,7 @@ export const Feed = () => {
     </div>
     
         <form action = "" id="postForm" class="publication-form">
-          <textarea class="feed-text-area" id='postText' rows='15' placeholder='O que você quer compartilhar?'>
-        </textarea> 
+          <textarea class="feed-text-area" id='postText' rows='15' placeholder='O que você quer compartilhar?'></textarea> 
           <input class="feed-hide-url" id="hide-url"> </input>
           <div class='share-area-buttons'>
           <button id='publish-img-btn' class='publish-img-btn'></button>
@@ -161,7 +160,7 @@ export const Feed = () => {
             <button type="submit" data-saveEditionPostButton="${post.id}" class="btn-edit-save" hidden> Salvar </button>
           </div>
           <p class="txt"> ${post.data().text} </p>
-          <textarea class='edit-text-area' data-edit-text-area='${post.id}' hidden>${post.data().text}</textarea>
+          <textarea class='edit-text-area' data-edit-text-area='${post.id}' hidden>${post.data().text}></textarea>
           ${((url) => {
     if (url !== '') {
       return `<img class="img-po" src="${post.data().url}"> </img>`;

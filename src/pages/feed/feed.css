@@ -209,25 +209,23 @@
 }
 
 .publish-img-btn {
-  background-image: url("../../../images/picpic.svg");
+  background-image: url("/images/picpic.svg");
   cursor: pointer;
   background-size: 36px 31px;
   background-position: center;
   width: 27px;
   height: 23px;
-  border-radius: 8px;
   border: #025159 solid 1pt;
   margin-left: 3%;
 }
 
 .publish-img-btn:hover {
-    background-image: url("../../../images/pic-img.gif");
+    background-image: url("/images/pic-img.gif");
     cursor: pointer;
     background-size: 38px 33px;
     background-position: center;
     width: 28px;
     height: 21px;
-    border-radius: 8px;
     border: #025159 solid 1pt;
     margin-left: 3%;
 }
@@ -310,7 +308,7 @@
 
 .delete-button {
   cursor: pointer;
-  background-image: url("../../../images/trash-img.png");
+  background-image: url("/images/trash-img.png");
   background-color: transparent;
   background-size: 30px 30px;
   width: 30px;
@@ -321,7 +319,7 @@
 
 .delete-button:hover {
     cursor: pointer;
-    background-image: url("../../../images/trash.gif");
+    background-image: url("/images/trash.gif");
     background-color: transparent;
    
     background-size: 30px 30px;
@@ -334,7 +332,7 @@
 .btn-edit {
   margin-top: 2%;
   cursor: pointer;
-  background: url("../../../images/edit.png");
+  background: url("/images/edit.png");
   background-size: 30px 30px;
   border-radius: 25px;
   margin-right: 3%;
@@ -346,7 +344,7 @@
 .btn-edit:hover {
     margin-top: 2%;
     cursor: pointer;
-    background: url("../../../images/edit-gif.gif");
+    background: url("/images/edit-gif.gif");
     background-size: 30px 30px;
     border-radius: 25px;
     margin-right: 3%;
@@ -393,7 +391,7 @@
 
 .btn-show-comments-div {
   cursor: pointer;
-  background-image: url("../../../images/comentario.png");
+  background-image: url("/images/comentario.png");
   background-color: transparent;
   background-size: 30px 30px;
   width: 30px;
@@ -486,9 +484,9 @@
 }
 
 .img-po {
-  max-width: 420px;
-  max-height: 420px;
-  margin-top: 5px;
+  max-width: 80%;
+  max-height: 80%;
+  margin-top: 3%;
 }
 
 .comments ul {
@@ -514,15 +512,15 @@
 }
 
 .empty-like-btn {
- background-image: url("../../../images/green-like.png");
+ background-image: url("/images/green-like.png");
 }
 
 .empty-like-btn:hover {
-    background-image: url("../../../images/empty-like.gif");
+    background-image: url("/images/empty-like.gif");
 }
    
 .full-like-btn {
-  background-image: url("../../../images/like-btn.png");
+  background-image: url("/images/like-btn.png");
 }
 
 #image_uploads {
@@ -604,10 +602,8 @@ aside.light-mode {
     border-top:rgb(182, 179, 179, 0.7) solid 1pt;
     margin-left: 21%;
     margin-bottom: 0%;
-
   }
 
-  
   .feed-settings{
     flex-direction: column;
     margin: 5% 8% 0% 7%;
@@ -633,7 +629,6 @@ aside.light-mode {
     bottom: 0;
     margin-bottom: 0%;
     border-top: gray solid 1pt;
-    z-index: 10;
 
   }
 
@@ -682,7 +677,12 @@ aside.light-mode {
     right: 2%;
     left: unset;
   }
+
+  .publish-img-form-box{
+    font-size: 10%;
+  }
 }
+
 
 @media screen and (max-width: 780px) {
   .wrap{
@@ -705,6 +705,10 @@ aside.light-mode {
   .feed-settings-container {
     margin-left: 26%;
   }
+
+  .btn-form{
+    margin-left: 55%;
+  }
 }
 
 
@@ -722,6 +726,10 @@ aside.light-mode {
     width: 30px;
     height: 30px;
   }
+
+  .btn-form{
+    margin-left: 50%;
+  }
 }
 
 @media screen and (max-width: 411px) {
@@ -738,13 +746,28 @@ aside.light-mode {
 
   
   .feed-settings-container{
-    margin-left: 29%;
+    margin-left: 27%;
   }
 
   .feed-settings{
     margin: 5% 0% 3% 8%;
   }
 
+  .publication-form{
+    width: 85%;
+  }
+
+  .div-postados{
+    width: 80%;
+  }
+
+  .btn-form{
+    margin-left: 45%;
+  }
+
+  .share-area-img-btn{
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -765,7 +788,7 @@ aside.light-mode {
 
   .feed-settings-container{
     height: 8vh;
-    margin-left: 27%;
+    margin-left: 25%;
   }
 
   .feed-settings button{
