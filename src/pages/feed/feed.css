@@ -180,6 +180,7 @@
   margin-top: 3%;
   margin-left: 3%;
   text-align: justify;
+  background-color: white;
 }
 
 .share-area-buttons {
@@ -208,7 +209,7 @@
 }
 
 .publish-img-btn {
-  background-image: url("/images/picpic.svg");
+  background-image: url("../../../images/picpic.svg");
   cursor: pointer;
   background-size: 36px 31px;
   background-position: center;
@@ -220,7 +221,7 @@
 }
 
 .publish-img-btn:hover {
-    background-image: url("/images/pic-img.gif");
+    background-image: url("../../../images/pic-img.gif");
     cursor: pointer;
     background-size: 38px 33px;
     background-position: center;
@@ -309,7 +310,7 @@
 
 .delete-button {
   cursor: pointer;
-  background-image: url("/images/trash-img.png");
+  background-image: url("../../../images/trash-img.png");
   background-color: transparent;
   background-size: 30px 30px;
   width: 30px;
@@ -320,7 +321,7 @@
 
 .delete-button:hover {
     cursor: pointer;
-    background-image: url("/images/trash.gif");
+    background-image: url("../../../images/trash.gif");
     background-color: transparent;
    
     background-size: 30px 30px;
@@ -333,7 +334,7 @@
 .btn-edit {
   margin-top: 2%;
   cursor: pointer;
-  background: url("/images/edit.png");
+  background: url("../../../images/edit.png");
   background-size: 30px 30px;
   border-radius: 25px;
   margin-right: 3%;
@@ -345,7 +346,7 @@
 .btn-edit:hover {
     margin-top: 2%;
     cursor: pointer;
-    background: url("/images/edit-gif.gif");
+    background: url("../../../images/edit-gif.gif");
     background-size: 30px 30px;
     border-radius: 25px;
     margin-right: 3%;
@@ -392,7 +393,7 @@
 
 .btn-show-comments-div {
   cursor: pointer;
-  background-image: url("/images/comentario.png");
+  background-image: url("../../../images/comentario.png");
   background-color: transparent;
   background-size: 30px 30px;
   width: 30px;
@@ -513,15 +514,15 @@
 }
 
 .empty-like-btn {
- background-image: url("/images/green-like.png");
+ background-image: url("../../../images/green-like.png");
 }
 
 .empty-like-btn:hover {
-    background-image: url("/images/empty-like.gif");
+    background-image: url("../../../images/empty-like.gif");
 }
    
 .full-like-btn {
-  background-image: url("/images/like-btn.png");
+  background-image: url("../../../images/like-btn.png");
 }
 
 #image_uploads {
@@ -603,9 +604,10 @@ aside.light-mode {
     border-top:rgb(182, 179, 179, 0.7) solid 1pt;
     margin-left: 21%;
     margin-bottom: 0%;
-    z-index: -1;
+
   }
 
+  
   .feed-settings{
     flex-direction: column;
     margin: 5% 8% 0% 7%;
