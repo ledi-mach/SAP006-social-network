@@ -1,5 +1,48 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-alert */
+
+/* if (postText === '') {
+      const divAlertNull = rootElement.querySelector('.alert-null');
+      const btnAlert = rootElement.querySelector('.confirm-alert');
+      divAlertNull.style.display = 'block';
+      btnAlert.addEventListener('click', () => {
+        divAlertNull.style.display = 'none';
+      });
+    } */
+/*   <div class='alert-null' id='alert-null'>
+          <div class='modal-alert' id='modal-alert'>
+          <p class='h1-modal-alert' id='h1-modal-alert'>O campo de texto não pode estar vazio!</p>
+          <button class='confirm-alert' id="confirm-alert" >Ok!</button>
+          </div>
+      </div> */
+/*   <div class="confirm-delete-comment" data-confirmDeleteModal>
+        <div class="modal-delete-comment">
+        <p class="h1-modal">Você tem certeza que quer excluir esse comentário?</p>
+        <button class="delete-buttons-comment-modal" id="confirm-delete-modal">Confirmar</button>
+        <button class="delete-buttons-comment-modal" id="cancel-delete-modal"> Cancelar </button>
+        </div>
+      </div> */
+/* // delete comment modal
+    if (target.dataset.item === 'delete-comment-button') {
+      const divConfirmDeleteModal = target.parentNode.parentNode.parentNode.parentNode.children[8];
+      const deleteButtonModal = target.parentNode.parentNode.parentNode.parentNode.children[8]
+        .children[0].children[1];
+      const cancelButtonModal = target.parentNode.parentNode.parentNode.parentNode
+        .children[8].children[0].children[2];
+      divConfirmDeleteModal.style.display = 'block';
+
+      deleteButtonModal.addEventListener('click', () => {
+        const commentID = target.dataset.deletecommentbutton;
+        getCurrentCommentsToDelete(postIDForComments, commentID, printComments);
+      });
+      cancelButtonModal.addEventListener('click', () => {
+        divConfirmDeleteModal.style.display = 'none';
+      });
+    } */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-alert */
 import { getTheRoad, logOut, sendImageToDatabase } from '../../lib/auth.js';
 import { editPost, getPosts, deletePost } from './services.js';
 import {
@@ -12,7 +55,7 @@ export const Feed = () => {
   rootElement.className = 'feed-container';
   rootElement.innerHTML = `
   <main class="all-container" id="all-container">
-    <div class="feed-left-section">
+    <div class="feed-left-section" id="feed-left">
       <aside>  
         <section class='profile-area'>
           <div class='div-perfil'>
@@ -70,8 +113,7 @@ export const Feed = () => {
     </div>
     
         <form action = "" id="postForm" class="publication-form">
-          <textarea class="feed-text-area" id='postText' rows='15' placeholder='O que você quer compartilhar?'>
-        </textarea> 
+          <textarea class="feed-text-area" id='postText' rows='15' placeholder='O que você quer compartilhar?'></textarea> 
           <input class="feed-hide-url" id="hide-url"> </input>
           <div class='share-area-buttons'>
           <button id='publish-img-btn' class='publish-img-btn'></button>
@@ -97,7 +139,7 @@ export const Feed = () => {
     rootElement.querySelector('#image_uploads').onchange = (event) => {
       sendImageToDatabase(event.target.files[0], showUrlOfImagesToPublish);
       rootElement.querySelector('.publish-img-form-box').style.opacity = 0;
-      rootElement.querySelector('#postText').placeholder = 'Imagem carregada';
+      rootElement.querySelector('#postText').placeholder = 'Imagem carregada. Digite o seu texto...';
     };
   };
 
@@ -129,14 +171,21 @@ export const Feed = () => {
     }
   });
 
+  function clickDarkLight() {
+    const body = rootElement.querySelector('main');
+    const currentClass = body.className;
+    body.className = currentClass === 'dark-mode' ? 'light-mode' : 'dark-mode';
+    const aside = rootElement.querySelector('aside');
+    const currentClassAside = aside.className;
+    aside.className = currentClassAside === 'dark-mode' ? 'light-mode' : 'dark-mode';
+    const feedSection = rootElement.querySelector('#feed-left');
+    const currentClassSection = feedSection.className;
+    feedSection.className = currentClassSection === 'dark-mode' ? 'light-mode' : 'dark-mode';
+  }
+
   const darkMode = () => {
     rootElement.querySelector('#button-dark').addEventListener('click', () => {
-      const change = rootElement.querySelector('#all-container');
-      const changeAside = rootElement.querySelector('aside');
-      const changeFeed = rootElement.querySelector('.feed-left-section');
-      change.style.background = 'rgb(30, 35, 41)';
-      changeAside.style.background = 'rgb(19, 22, 26)';
-      changeFeed.style.background = 'rgb(19, 22, 26)';
+      clickDarkLight();
     });
   };
   darkMode();
@@ -168,15 +217,18 @@ export const Feed = () => {
     } return `<img id="hide-img" src="${post.data().url}"> </img>`;
   })(post.data().url)}
           <section class="likes-comments-bar">
-        
-          <section class="anim-like"id="anim-like" >
-          </section> 
-          <button class="like-btn" id="like-btn" data-likePostButton = "${post.id}"></button> 
+          ${((likes) => {
+    if (likes.length > 0) {
+      if (likes.includes(currentUserEmail)) {
+        return `<button class="like-btn full-like-btn" id="like-btn" data-likePostButton = "${post.id}"></button>`;
+      } return `<button class="like-btn empty-like-btn" id="like-btn" data-likePostButton = "${post.id}"></button>`;
+    } return `<button class="like-btn empty-like-btn" id="like-btn" data-likePostButton = "${post.id}"></button>`;
+  })(post.data().likes)}
             ${((quantityOfLikes) => {
     if (quantityOfLikes === 1) {
       return `<p class="f-20 like-value" data-likes-id="${post.id}"> 
                 <span data-like-value-to-be-changed="${post.id}"> ${quantityOfLikes} </span> 
-                <span data-like-text-to-be-changed="${post.id}">Curtida </span> 
+                <span data-like-text-to-be-changed="${post.id}">Curtida&nbsp </span> 
               </p>`;
     } if (quantityOfLikes > 1) {
       return `<p class="f-20 like-value" data-likes-id="${post.id}">
@@ -218,10 +270,9 @@ export const Feed = () => {
     rootElement.querySelector('#hide-url').value = '';
     const postTemplate = createPostTemplate(post);
     postElement.innerHTML = postTemplate;
-    const showheat = postElement.querySelector('#like-btn');
-    showheat.addEventListener('click', () => {
-      const element = postElement.querySelector('.anim-like'); element.style.opacity = 1;
-    });
+    // const showheat = postElement.querySelector('#like-btn');
+    // showheat.addEventListener('click', () => {
+    // const element = postElement.querySelector('.anim-like'); element.style.opacity = 1;});
     rootElement.querySelector('#postado').appendChild(postElement);
   }
 
@@ -271,22 +322,27 @@ export const Feed = () => {
       commentsToPrint.forEach((comment) => {
         const newItem = `
             <li class="comment-f-20" id="${comment.id}">
-              <p class="comment-owner"> ${comment.owner} comentou em ${comment.date}: </p>
-              <p class="comment-content"> ${comment.content}</p>
-              ${((user) => {
+              <span class="comment-owner"> ${comment.owner} comentou em ${comment.date}: </span>
+      ${((user) => {
     if (user === currentUserEmail) {
       return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}"> </button>`;
     } return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}" hidden> </button>`;
   })(comment.owner)}
-              <button class="like-comment-btn" data-likeCommentButton="${comment.id}"> </button> 
-            
+              <p class="comment-content"> ${comment.content}</p>
+  ${((likes) => {
+    if (likes.length > 0) {
+      if (likes.includes(currentUserEmail)) {
+        return `<button class="like-comment-btn full-like-btn" data-likeCommentButton="${comment.id}"></button>`;
+      } return `<button class="like--comment-btn empty-like-btn" data-likeCommentButton="${comment.id}"></button>`;
+    } return `<button class="like-comment-btn empty-like-btn" data-likeCommentButton="${comment.id}"></button>`;
+  })(comment.commentLikes)}
             ${((quantityOfLikes) => {
     if (quantityOfLikes === 1) {
-      return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtida </span> </p>`;
+      return `<span class="f-20 like-comment-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> </span>`;
     } if (quantityOfLikes > 1) {
-      return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`;
+      return `<span class="f-20 like-comment-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> </span>`;
     }
-    return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`;
+    return `<span class="f-20 like-comment-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> </span>`;
   })(comment.commentLikes.length)}
   <hr class="comments-division">
             `;
@@ -341,7 +397,9 @@ export const Feed = () => {
       const valueToBeChanged = rootElement.querySelector(`[data-like-value-to-be-changed="${postID}"]`);
       const textToBeChanged = rootElement.querySelector(`[data-like-text-to-be-changed="${postID}"]`);
       const amountOfLikes = parseInt(valueToBeChanged.textContent, 10);
-      updateLikes(postID, currentUserEmail, valueToBeChanged, textToBeChanged, amountOfLikes);
+      const likeStatus = rootElement.querySelector(`[data-likePostButton="${postID}"]`);
+      updateLikes(postID, currentUserEmail, valueToBeChanged,
+        textToBeChanged, amountOfLikes, likeStatus);
     }
 
     // Show Post Comments Div:
@@ -367,8 +425,9 @@ export const Feed = () => {
       const valueToBeChanged = rootElement.querySelector(`[data-comment-likes-value-to-be-changed="${commentID}"]`);
       const textToBeChanged = rootElement.querySelector(`[data-comment-likes-text-to-be-changed="${commentID}"]`);
       const amountOfLikes = parseInt(valueToBeChanged.textContent, 10);
+      const likeStatus = rootElement.querySelector(`[data-likeCommentButton="${commentID}"]`);
       getCurrentCommentLikes(postIDForComments, currentUserEmail, commentID,
-        valueToBeChanged, textToBeChanged, amountOfLikes);
+        valueToBeChanged, textToBeChanged, amountOfLikes, likeStatus);
     }
 
     // Delete Post Comment:

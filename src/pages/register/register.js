@@ -37,7 +37,7 @@ export const Register = () => {
         <button id="btn-register-account">REGISTRAR</button>
       </div>
     </main>
-    <footer class="register-footer"> Willing &copy 2021</footer>
+
   </section> 
 `;
   const getUserEmail = rootElement.querySelector('#input-email');
