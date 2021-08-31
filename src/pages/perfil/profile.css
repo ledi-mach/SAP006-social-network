@@ -1,0 +1,283 @@
+.div-profile {
+  height: 100vh;
+  width: 100vw;
+  margin-top: 0;
+  position: absolute;
+  background-image: linear-gradient(
+    to right,
+    rgba(2, 81, 89, 1),
+    rgba(255, 0, 0, 0)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.profile-edit {
+  width: 33%;
+  height: 80vh;
+  margin: auto;
+  background-color: white;
+}
+
+.btn-profile-edit button {
+  width: 30%;
+  margin: 5% 0% 5% 0%;
+  border-radius: 25px;
+  background-color: #025159;
+  color: white;
+  border: solid 0pt;
+  align-items: center;
+  padding: 2% 2% 2% 2%;
+}
+
+.btn-profile-edit button,
+.change-name input {
+  font-size: 110%;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(10, 54, 37, 0.4);
+  align-items: center;
+}
+
+.profile-edit button:hover {
+  transform: translateX(-2px);
+  box-shadow: 0 4px 30px rgba(10, 54, 37, 0.95);
+}
+
+.img-logo-profile {
+  width: 70%;
+  height: 16vh;
+  margin-top: 1%;
+}
+
+.photo-perfil {
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+.profile-input-label {
+  position: absolute;
+  left: 40%;
+  margin-top: 1%;
+}
+
+.new-name:focus ~ .profile-input-label,
+.new-name:not(:placeholder-shown).new-name:not(:focus) ~ .profile-input-label {
+  margin-top: 0.1%;
+  font-size: 13px;
+  color: grey;
+}
+
+.change-name input {
+  color: #025159;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  height: 35px;
+  width: 65%;
+  padding: 1.5% 3% 0.5% 3%;
+  border: solid 1pt;
+  justify-content: start;
+}
+
+
+
+.btn-profile-edit {
+  margin-top: 3%;
+}
+
+
+.div-profile form {
+  margin-top: 5%;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.img-perfil {
+  height: 20vh;
+  width: 20vh;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #025159;
+}
+
+.profile-photo-change {
+  width: 100%;
+  height: 100px;
+}
+.p-save-changes {
+  width: 65%;
+  margin: auto;
+  font-size: 110%;
+  font-weight: 500;
+}
+
+.div-password img {
+  width: 6%;
+  position: absolute;
+  margin-left: -10%;
+  margin-top: 2%;
+}
+
+@media screen and (max-width: 1024px) {
+  .img-logo-profile{
+    height: 14vh;
+  }
+
+  .profile-edit {
+    width: 80%;
+    height: 60vh;
+  }
+
+  .div-profile form{
+    margin-top: 25%;
+  }
+
+  .photo-perfil{
+    margin-top: 25%;
+  }
+
+  .change-name input{
+    width: 40%;
+    margin-top: 5%;
+  }
+
+  .profile-input-label{
+    left: 33%;
+    margin-top: 5.5%;
+  }
+
+  .new-name:focus ~ .profile-input-label,
+  .new-name:not(:placeholder-shown).new-name:not(:focus) ~ .profile-input-label {
+    margin-top: 4.3%;
+  }
+
+  .btn-profile-edit button{
+    width: 17%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .btn-profile-edit button{
+    width: 20%;
+  }
+
+  .new-name:focus ~ .profile-input-label,
+  .new-name:not(:placeholder-shown).new-name:not(:focus) ~ .profile-input-label {
+    margin-top: 4.2%;
+    margin-left:1%;
+  }
+
+  .profile-edit {
+    height: 65vh;
+  }
+
+  .img-logo-profile{
+    height: 13vh;
+  }
+
+  .div-profile form{
+    margin-top: 22%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .btn-profile-edit button{
+    width: 25%;
+  }
+
+  .img-logo-profile{
+    width: 80%;
+  }
+
+  .change-name input{
+    width: 60%;
+  }
+
+  .profile-input-label{
+    left: 26%;
+    margin-top: 6%;
+  }
+
+  .photo-perfil{
+    margin-top: 15%;
+  }
+
+  .new-name:focus ~ .profile-input-label,
+  .new-name:not(:placeholder-shown).new-name:not(:focus) ~ .profile-input-label {
+    margin-top: 4.5%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .img-logo-profile{
+    height: 10vh;
+  }
+
+  .change-name input{
+    width: 70%;
+    margin-bottom: 5%;
+  }
+
+  .profile-input-label{
+    left: 26%;
+    margin-top: 7%;
+  }
+
+  .photo-perfil{
+    margin-top: 25%;
+  }
+  .btn-profile-edit button{
+    width: 30%;
+  }
+
+  .div-profile form{
+    margin-top: 25%;
+  }
+
+  .div-password img {
+    margin-top: 5%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .profile-edit {
+    width: 80%;
+    height: 70vh;
+  }
+
+  .div-profile form{
+    margin-top: 28%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .div-profile{
+    height: 120vh;
+  }
+
+  .profile-edit {
+    height: 85vh;
+  }
+
+  .div-profile form{
+    margin-top: 10%;
+  }
+
+  .img-logo-profile{
+    height: 12vh;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 280px){
+  .div-profile form{
+    height: 70vh;
+    margin-top: 40%;
+  }
+
+  .img-logo-profile{
+    height: 9vh;
+    width: 100%;
+  }
+
+}
