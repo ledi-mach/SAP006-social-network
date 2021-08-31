@@ -125,7 +125,7 @@
 
   .profile-edit {
     width: 80%;
-    height: 60vh;
+    height: 65vh;
   }
 
   .div-profile form{
@@ -168,7 +168,7 @@
   }
 
   .profile-edit {
-    height: 65vh;
+    height: 70vh;
   }
 
   .img-logo-profile{
@@ -242,7 +242,7 @@
 @media screen and (max-width: 360px) {
   .profile-edit {
     width: 80%;
-    height: 70vh;
+    height: 80vh;
   }
 
   .div-profile form{

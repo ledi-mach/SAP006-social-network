@@ -18,7 +18,7 @@ export const Feed = () => {
           <div class='div-perfil'>
             <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-up'>
             <br>
-            <img src='imagens/user.png' id='photo' class='photo feed-user-photo'>
+            <img src="${firebase.auth().currentUser.photoURL}" id='photo' class='photo feed-user-photo'>
             <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-bottom'>
             <div class = "feed-welcome-user">
               <p> Bem vinda </p>
@@ -113,19 +113,15 @@ export const Feed = () => {
     event.preventDefault();
     getTheRoad('/profile');
   });
-
   const photoPerfil = rootElement.querySelector('.photo');
   const nomeP = rootElement.querySelector('.name-user');
   firebase.auth().onAuthStateChanged((user) => {
-    if (user !== null) {
+    if (user != null) {
       nomeP.innerHTML = user.displayName;
       photoPerfil.src = user.photoURL;
-      if (user.photoURL !== null) {
-        photoPerfil.src = user.photoURL;
-      }
-      photoPerfil.src = 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png';
     } else {
       nomeP.innerHTML = user.email;
+      photoPerfil.src = 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png';
     }
   });
 

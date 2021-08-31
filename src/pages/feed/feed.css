@@ -1,4 +1,3 @@
-
 /* Feed */
 .all-container {
   flex-direction: column;
@@ -10,7 +9,7 @@
   height: 100vh;
   padding: 5% 0%;
   position: fixed;
-  background-color: rgb(182, 179, 179);
+  background-color: #ffff;
 }
 
 .feed-right-section {
@@ -26,7 +25,7 @@
   width: 85%;
 }
 
-.feed-icon-aside-bottom{
+.feed-icon-aside-bottom {
   display: none;
 }
 
@@ -41,7 +40,7 @@
   height: 170px;
   border-radius: 50%;
   border: none;
-  box-shadow: 0 4px 20px rgba(10, 54, 37, 0.4);
+
 }
 
 .name-user {
@@ -60,36 +59,35 @@
   margin-top: 12%;
   flex-direction: row;
   justify-content: center;
-  
 }
 
-.feed-settings span{
+.feed-settings span {
   margin-left: 170%;
   color: #666666;
 }
 
 .feed-settings button {
   font-size: 100%;
-  background-size:cover;
+  background-size: cover;
   height: 4.5vh;
   width: 4.5vh;
-  margin-left:-50%;
+  margin-left: -50%;
 }
 
-.home-icon{
-  background-image: url('./../../images/home-icon.png');
+.home-icon {
+  background-image: url("./../../images/home-icon.png");
 }
 
-.perfil-icon{
-  background-image: url('./../../images/config-icon.png');
+.perfil-icon {
+  background-image: url("./../../images/config-icon.png");
 }
 
-.dark-icon{
-  background-image: url('./../../images/dark-icon.png');
+.dark-icon {
+  background-image: url("./../../images/dark-icon.png");
 }
 
-.singout-icon{
-  background-image: url('./../../images/out-icon.png');
+.singout-icon {
+  background-image: url("./../../images/out-icon.png");
 }
 
 .modal-delete button {
@@ -171,7 +169,6 @@
 
 .feed-text-area {
   font-size: 110%;
-  color: #025159;
   width: 90%;
   padding: 2%;
   border: 0 none;
@@ -180,6 +177,7 @@
   margin-top: 3%;
   margin-left: 3%;
   text-align: justify;
+  background-color: #ffff;
 }
 
 .share-area-buttons {
@@ -208,7 +206,7 @@
 }
 
 .publish-img-btn {
-  background-image: url("/images/picpic.svg");
+  background-image: url("/images/picpic.png");
   cursor: pointer;
   background-size: 36px 31px;
   background-position: center;
@@ -220,15 +218,15 @@
 }
 
 .publish-img-btn:hover {
-    background-image: url("/images/pic-img.gif");
-    cursor: pointer;
-    background-size: 38px 33px;
-    background-position: center;
-    width: 28px;
-    height: 21px;
-    border-radius: 8px;
-    border: #025159 solid 1pt;
-    margin-left: 3%;
+  background-image: url("/images/pic-img.gif");
+  cursor: pointer;
+  background-size: 38px 33px;
+  background-position: center;
+  width: 28px;
+  height: 21px;
+  border-radius: 8px;
+  border: #025159 solid 1pt;
+  margin-left: 3%;
 }
 
 .posts-container {
@@ -239,9 +237,9 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 1%;
-}
+  margin-bottom: 30%;
 
+}
 .div-postados {
   border-radius: 12px;
   width: 65%;
@@ -319,15 +317,15 @@
 }
 
 .delete-button:hover {
-    cursor: pointer;
-    background-image: url("/images/trash.gif");
-    background-color: transparent;
-   
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
-    border-radius: 25px;
-    border: none;
+  cursor: pointer;
+  background-image: url("/images/trash.gif");
+  background-color: transparent;
+
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  border: none;
 }
 
 .btn-edit {
@@ -343,15 +341,15 @@
 }
 
 .btn-edit:hover {
-    margin-top: 2%;
-    cursor: pointer;
-    background: url("/images/edit-gif.gif");
-    background-size: 30px 30px;
-    border-radius: 25px;
-    margin-right: 3%;
-    width: 30px;
-    height: 30px;
-    border: none;
+  margin-top: 2%;
+  cursor: pointer;
+  background: url("/images/edit-gif.gif");
+  background-size: 30px 30px;
+  border-radius: 25px;
+  margin-right: 3%;
+  width: 30px;
+  height: 30px;
+  border: none;
 }
 
 .f-20 {
@@ -485,8 +483,8 @@
 }
 
 .img-po {
-  max-width: 420px;
-  max-height: 420px;
+  max-width: 280px;
+  max-height: 320px;
   margin-top: 5px;
 }
 
@@ -513,13 +511,9 @@
 }
 
 .empty-like-btn {
- background-image: url("/images/green-like.png");
+  background-image: url("/images/green-like.png");
 }
 
-.empty-like-btn:hover {
-    background-image: url("/images/empty-like.gif");
-}
-   
 .full-like-btn {
   background-image: url("/images/like-btn.png");
 }
@@ -558,7 +552,7 @@
 }
 
 main.dark-mode {
-  background-color:  rgb(30, 35, 41);
+  background-color: rgb(30, 35, 41);
 }
 
 main.light-mode {
@@ -566,31 +560,28 @@ main.light-mode {
 }
 
 aside.dark-mode {
-    background-color: #111;
- 
-  }
-  
-aside.light-mode {
-    background-color: rgb(182, 179, 179);
+  background-color: #111;
+}
 
-  }
-  
- #feed-left.dark-mode {
-    width: 20%;
-    height: 100vh;
-    padding: 5% 0%;
-    position: fixed;
-    background-color: #111;
- 
-  }
-  
+aside.light-mode {
+  background-color: rgb(182, 179, 179);
+}
+
+#feed-left.dark-mode {
+  width: 20%;
+  height: 100vh;
+  padding: 5% 0%;
+  position: fixed;
+  background-color: #111;
+}
+
 #feed-left.light-mode {
-    width: 20%;
-    height: 100vh;
-    padding: 5% 0%;
-    position: fixed;
-    background-color: rgb(182, 179, 179);
-  }
+  width: 20%;
+  height: 100vh;
+  padding: 5% 0%;
+  position: fixed;
+  background-color: rgb(182, 179, 179);
+}
 
 @media screen and (max-width: 1024px) {
   .feed-settings-container {
@@ -600,23 +591,21 @@ aside.light-mode {
     bottom: 0;
     width: 100%;
     height: 11vh;
-    border-top:rgb(182, 179, 179, 0.7) solid 1pt;
     margin-left: 21%;
     margin-bottom: 0%;
-    z-index: -1;
   }
 
-  .feed-settings{
+  .feed-settings {
     flex-direction: column;
     margin: 5% 8% 0% 7%;
     padding-bottom: 3%;
   }
 
-  .feed-settings span{
+  .feed-settings span {
     display: none;
   }
 
-  .feed-settings button{
+  .feed-settings button {
     height: 4.5vh;
     width: 4.5vh;
   }
@@ -624,15 +613,13 @@ aside.light-mode {
   .feed-left-section {
     height: 13vh;
     width: 16vh;
-    border-top-left-radius: 110px; 
+    border-top-left-radius: 110px;
     border-top-right-radius: 110px;
     position: fixed;
     background-color: white;
     bottom: 0;
     margin-bottom: 0%;
     border-top: gray solid 1pt;
-    z-index: 10;
-
   }
 
   .feed-icon-aside-bottom {
@@ -643,19 +630,19 @@ aside.light-mode {
     margin-top: 1%;
   }
 
-  .feed-icon-aside-up{
+  .feed-icon-aside-up {
     display: none;
   }
 
-  .feed-user-photo{
+  .feed-user-photo {
     margin-top: -21%;
   }
 
-  .feed-welcome-user{
+  .feed-welcome-user {
     display: none;
   }
 
-  .feed-right-section{
+  .feed-right-section {
     width: 100%;
     margin: auto;
   }
@@ -665,25 +652,30 @@ aside.light-mode {
     height: 11vh;
     width: 86%;
   }
-  
+
   .pictures {
     height: 10vh;
     width: 10vh;
   }
 
-  .slide-to-left, .slide-to-right{
+  .slide-to-left,
+  .slide-to-right {
     top: calc(5%);
     left: 2%;
   }
 
-  .slide-to-right{
+  .slide-to-right {
     right: 2%;
     left: unset;
+  }
+
+  .publish-img-form-box {
+    font-size: 10%;
   }
 }
 
 @media screen and (max-width: 780px) {
-  .wrap{
+  .wrap {
     width: 80%;
   }
 
@@ -692,61 +684,117 @@ aside.light-mode {
     width: 20vh;
   }
 
-  .feed-icon-aside-bottom{
+  .feed-icon-aside-bottom {
     display: none;
   }
 
-  .feed-settings{
+  .feed-settings {
     margin: 5% 0% 3% 10%;
   }
 
   .feed-settings-container {
     margin-left: 26%;
   }
+
+  .btn-form {
+    margin-left: 55%;
+  }
 }
 
-
-
 @media screen and (max-width: 540px) {
-  .feed-user-photo{
+  .feed-user-photo {
     width: 120px;
     height: 120px;
   }
-  .feed-left-section{
+  .feed-left-section {
     height: 12vh;
   }
 
-  .slide-to-left, .slide-to-right{
+  .slide-to-left,
+  .slide-to-right {
     width: 30px;
     height: 30px;
+  }
+
+  .btn-form {
+    margin-left: 50%;
   }
 }
 
 @media screen and (max-width: 411px) {
-  .feed-user-photo{
+  .feed-user-photo {
     width: 12vh;
     height: 12vh;
     margin-top: -26%;
   }
 
-  .feed-left-section{
+  .feed-left-section {
     height: 10vh;
-    width: 16vh;
+    width: 19vh;
   }
 
-  
   .feed-settings-container{
     margin-left: 29%;
   }
 
-  .feed-settings{
+
+  .feed-settings {
     margin: 5% 0% 3% 8%;
   }
 
+  .publication-form {
+    width: 85%;
+  }
+
+  .div-postados {
+    width: 80%;
+  }
+
+  .btn-form {
+    margin-left: 45%;
+  }
+
+  .share-area-img-btn {
+    font-size: 10px;
+  }
+
+  .delete-button {
+    position: absolute;
+    margin-top: -20px;
+    right: 70px;
+  }
+  .btn-show-comments-div {
+    background-size: 20px 20px;
+    width: 30px;
+    height: 30px;
+    margin-left: 58%;
+
+  }
+ .like-btn {
+    margin-top: 1.5%;
+    margin-right: 1.5%;
+    margin-left: 1%;
+    background-size: 20px 20px;
+
+    width: 20px;
+    height: 20px;
+  }
+    
+.btn-edit {
+  position: absolute;
+  margin-top: -20px;
+  right: 30px;
+}
+.f-20 {
+  font-size: 10pt;
 }
 
+
+}
+
+
 @media screen and (max-width: 320px) {
-  .feed-user-photo{
+  .feed-user-photo {
     width: 10vh;
     height: 10vh;
     margin-top: -30%;
@@ -757,19 +805,17 @@ aside.light-mode {
     width: 13vh;
   }
 
-  .feed-settings{
+  .feed-settings {
     margin: 5% 0% 3% 7%;
   }
 
-  .feed-settings-container{
+  .feed-settings-container {
     height: 8vh;
-    margin-left: 27%;
+    margin-left: 25%;
   }
 
-  .feed-settings button{
+  .feed-settings button {
     height: 3vh;
     width: 3vh;
   }
-
 }
-
