@@ -16,9 +16,10 @@ export const Feed = () => {
       <aside>  
         <section class='profile-area'>
           <div class='div-perfil'>
-            <img src='images/name-icon.png' class='feed-icon-aside'>
+            <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-up'>
             <br>
-            <img src='imagens/user.png' id='photo' class='photo feed-user-photo'>
+            <img src="${firebase.auth().currentUser.photoURL}" id='photo' class='photo feed-user-photo'>
+            <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-bottom'>
             <div class = "feed-welcome-user">
               <p> Bem vinda </p>
               <p class='name-user' id="name-user"></p> 
@@ -27,20 +28,16 @@ export const Feed = () => {
         </section>
         <div class="feed-settings-container">
           <div class="feed-settings">
-            <img src="./images/home-icon.png" alt="">
-            <button class="text-icon" id=""> Início </button>
+            <button class="text-icon home-icon" id=""><span>Home</span></button>
           </div>
           <div class="feed-settings">
-            <img src="./images/config-icon.png" alt="">
-            <button class="perfil-icon text-icon" id="perfil-icon"> Perfil </button>
+            <button class="perfil-icon text-icon" id="perfil-icon"><span>Configurações</span></button>
           </div>
           <div class="feed-settings">
-            <img src="./images/dark-icon.png" alt="">
-            <button class="text-icon" id="button-dark"> Escuro </button>
+            <button class="text-icon dark-icon" id="button-dark"><span>Escuro</span></button>
           </div>
           <div class="feed-settings">
-            <img src="./images/out-icon.png" alt="">
-            <button class="text-icon" id="button-signout"> Sair </button>
+            <button class="text-icon singout-icon" id="button-signout"><span>Sair</span></button>
           </div>
         </div>
       </aside>
@@ -116,7 +113,6 @@ export const Feed = () => {
     event.preventDefault();
     getTheRoad('/profile');
   });
-
   const photoPerfil = rootElement.querySelector('.photo');
   const nomeP = rootElement.querySelector('.name-user');
   firebase.auth().onAuthStateChanged((user) => {
@@ -168,15 +164,18 @@ export const Feed = () => {
     } return `<img id="hide-img" src="${post.data().url}"> </img>`;
   })(post.data().url)}
           <section class="likes-comments-bar">
-        
-          <section class="anim-like"id="anim-like" >
-          </section> 
-          <button class="like-btn" id="like-btn" data-likePostButton = "${post.id}"></button> 
+          ${((likes) => {
+    if (likes.length > 0) {
+      if (likes.includes(currentUserEmail)) {
+        return `<button class="like-btn full-like-btn" id="like-btn" data-likePostButton = "${post.id}"></button>`;
+      } return `<button class="like-btn empty-like-btn" id="like-btn" data-likePostButton = "${post.id}"></button>`;
+    } return `<button class="like-btn empty-like-btn" id="like-btn" data-likePostButton = "${post.id}"></button>`;
+  })(post.data().likes)}
             ${((quantityOfLikes) => {
     if (quantityOfLikes === 1) {
       return `<p class="f-20 like-value" data-likes-id="${post.id}"> 
                 <span data-like-value-to-be-changed="${post.id}"> ${quantityOfLikes} </span> 
-                <span data-like-text-to-be-changed="${post.id}">Curtida </span> 
+                <span data-like-text-to-be-changed="${post.id}">Curtida&nbsp </span> 
               </p>`;
     } if (quantityOfLikes > 1) {
       return `<p class="f-20 like-value" data-likes-id="${post.id}">
@@ -218,10 +217,9 @@ export const Feed = () => {
     rootElement.querySelector('#hide-url').value = '';
     const postTemplate = createPostTemplate(post);
     postElement.innerHTML = postTemplate;
-    const showheat = postElement.querySelector('#like-btn');
-    showheat.addEventListener('click', () => {
-      const element = postElement.querySelector('.anim-like'); element.style.opacity = 1;
-    });
+    // const showheat = postElement.querySelector('#like-btn');
+    // showheat.addEventListener('click', () => {
+    // const element = postElement.querySelector('.anim-like'); element.style.opacity = 1;});
     rootElement.querySelector('#postado').appendChild(postElement);
   }
 
@@ -271,22 +269,27 @@ export const Feed = () => {
       commentsToPrint.forEach((comment) => {
         const newItem = `
             <li class="comment-f-20" id="${comment.id}">
-              <p class="comment-owner"> ${comment.owner} comentou em ${comment.date}: </p>
-              <p class="comment-content"> ${comment.content}</p>
-              ${((user) => {
+              <span class="comment-owner"> ${comment.owner} comentou em ${comment.date}: </span>
+      ${((user) => {
     if (user === currentUserEmail) {
       return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}"> </button>`;
     } return `<button class="delete-comment-btn" data-deleteCommentButton="${comment.id}" hidden> </button>`;
   })(comment.owner)}
-              <button class="like-comment-btn" data-likeCommentButton="${comment.id}"> </button> 
-            
+              <p class="comment-content"> ${comment.content}</p>
+  ${((likes) => {
+    if (likes.length > 0) {
+      if (likes.includes(currentUserEmail)) {
+        return `<button class="like-comment-btn full-like-btn" data-likeCommentButton="${comment.id}"></button>`;
+      } return `<button class="like--comment-btn empty-like-btn" data-likeCommentButton="${comment.id}"></button>`;
+    } return `<button class="like-comment-btn empty-like-btn" data-likeCommentButton="${comment.id}"></button>`;
+  })(comment.commentLikes)}
             ${((quantityOfLikes) => {
     if (quantityOfLikes === 1) {
-      return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtida </span> </p>`;
+      return `<span class="f-20 like-comment-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> </span>`;
     } if (quantityOfLikes > 1) {
-      return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`;
+      return `<span class="f-20 like-comment-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${quantityOfLikes} </span> </span>`;
     }
-    return `<p class="f-20 like-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> <span data-comment-likes-text-to-be-changed="${comment.id}">Curtidas </span> </p>`;
+    return `<span class="f-20 like-comment-value" data-comment-likes-id="${comment.id}"> <span data-comment-likes-value-to-be-changed="${comment.id}"> ${0} </span> </span>`;
   })(comment.commentLikes.length)}
   <hr class="comments-division">
             `;
@@ -341,7 +344,9 @@ export const Feed = () => {
       const valueToBeChanged = rootElement.querySelector(`[data-like-value-to-be-changed="${postID}"]`);
       const textToBeChanged = rootElement.querySelector(`[data-like-text-to-be-changed="${postID}"]`);
       const amountOfLikes = parseInt(valueToBeChanged.textContent, 10);
-      updateLikes(postID, currentUserEmail, valueToBeChanged, textToBeChanged, amountOfLikes);
+      const likeStatus = rootElement.querySelector(`[data-likePostButton="${postID}"]`);
+      updateLikes(postID, currentUserEmail, valueToBeChanged,
+        textToBeChanged, amountOfLikes, likeStatus);
     }
 
     // Show Post Comments Div:
@@ -367,8 +372,9 @@ export const Feed = () => {
       const valueToBeChanged = rootElement.querySelector(`[data-comment-likes-value-to-be-changed="${commentID}"]`);
       const textToBeChanged = rootElement.querySelector(`[data-comment-likes-text-to-be-changed="${commentID}"]`);
       const amountOfLikes = parseInt(valueToBeChanged.textContent, 10);
+      const likeStatus = rootElement.querySelector(`[data-likeCommentButton="${commentID}"]`);
       getCurrentCommentLikes(postIDForComments, currentUserEmail, commentID,
-        valueToBeChanged, textToBeChanged, amountOfLikes);
+        valueToBeChanged, textToBeChanged, amountOfLikes, likeStatus);
     }
 
     // Delete Post Comment:
