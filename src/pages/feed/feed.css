@@ -21,7 +21,7 @@
 }
 
 .feed-icon-aside {
-  margin-top: -10%;
+  margin-top: -23%;
   width: 85%;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .feed-user-photo {
-  margin-top: 8%;
+  margin-top: 5%;
   width: 170px;
   height: 170px;
   border-radius: 50%;
@@ -352,6 +352,7 @@
   border: none;
 }
 
+
 .f-20 {
   font-size: 12pt;
 }
@@ -567,6 +568,7 @@ aside.light-mode {
   background-color: rgb(182, 179, 179);
 }
 
+
 #feed-left.dark-mode {
   width: 20%;
   height: 100vh;
@@ -746,6 +748,9 @@ aside.light-mode {
   position: absolute;
   margin-top: -20px;
   right: 90px;
+}
+#btn-cancel-edit{
+  color: rgb(255, 255, 255);
 }
 .f-20 {
   font-size: 10pt;

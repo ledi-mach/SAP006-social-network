@@ -21,7 +21,7 @@ export const Feed = () => {
             <img src="${firebase.auth().currentUser.photoURL}" id='photo' class='photo feed-user-photo'>
             <img src='images/name-icon.png' class='feed-icon-aside feed-icon-aside-bottom'>
             <div class = "feed-welcome-user">
-              <p> Bem vinda </p>
+              <p> Bem vinde </p>
               <p class='name-user' id="name-user"></p> 
             </div>
           </div>
@@ -74,7 +74,7 @@ export const Feed = () => {
           <button id='publish-img-btn' class='publish-img-btn'></button>
           <div class='publish-img-form-box'>
             <form method="post">
-              <input type="file" id="image_uploads" class='share-area-img-btn' accept=".jpg, .jpeg, .png">
+              <input type="file" id="image_uploads" class='share-area-img-btn' accept=".jpg, .jpeg, .png, .gif">
              </form>
           </div>
          
@@ -153,8 +153,10 @@ export const Feed = () => {
       return `<button type="submit" data-editPostButton="${post.id}" class="btn-edit"></button>`;
     } return `<button type="submit" data-editPostButton="${post.id}" class="btn-edit" hidden></button>`;
   })(post.data().user_id)}
-            <button type="submit" data-cancelEditionPostButton="${post.id}" class="btn-cancel-edit" hidden> Cancelar</button>
-            <button type="submit" data-saveEditionPostButton="${post.id}" class="btn-edit-save" hidden> Salvar </button>
+            <button type="submit" data-cancelEditionPostButton="${post.id}" class="btn-cancel-edit" style="background-color: rgb(255, 255, 255)"
+             hidden> Cancelar</button>
+            <button type="submit" data-saveEditionPostButton="${post.id}" class="btn-edit-save" style="background-color: rgb(255, 255, 255)"
+            hidden> Salvar </button>
           </div>
           <p class="txt"> ${post.data().text} </p>
           <textarea class='edit-text-area' data-edit-text-area='${post.id}' hidden>${post.data().text}</textarea>

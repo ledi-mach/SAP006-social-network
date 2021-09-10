@@ -10,6 +10,7 @@ export const addPost = (texto) => {
 };
 
 export const getPosts = (createAndPrintAllPosts) => {
+  const data = new Date().toLocaleString('pt-BR')
   firebase.firestore().collection('posts').orderBy('data', 'desc').get()
     .then((snap) => {
       snap.forEach((post) => {

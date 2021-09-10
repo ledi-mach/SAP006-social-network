@@ -7,12 +7,14 @@ Recebemos da Laboratoria o desafio de criar uma rede social que abordasse um tem
 
 ## Apresentação
 A Willing é uma rede social voltada para entretenimento e troca de experiências entre entusiastas de atividades outdoor, desde atividades mais básicas como caminhadas até viagens compartilhadas e/ou mochilões.
+Você pode conferir ela clicando [aqui](https://rede-social-ab0d1.web.app/).
 
 ## Planejamento e desenvolvimento
+O planejamento do projeto foi feito no GitHub categorizando e direcionando com as issues e desenvolvendo usando o método kanban.Definimos o backlog partindo de conversação e das necessidades previstas após a prototipagem no figma e definição das histórias de usuário. O planejamento sofreu algumas variações no decorrer do processo, mas uma versão dele pode ser vista abaixo.
 ![img](./src/images/planejamento.jpeg)
 
 ## Histórias de usuário
-Com base no levantamento das informações obtidas, desenvolvemos quatro histórias de usuário para guiar o desenvolvimento do projeto.
+Com base nas pesquisas e no levantamento das informações obtidas, desenvolvemos quatro histórias de usuário para guiar o desenvolvimento do projeto:
 
 ![img](./src/images/historiasDeUsuario.jpeg)
 ### Soluções de pronto e critérios de aceitação:
@@ -29,8 +31,7 @@ História 3: Nos posts, os usuários também deverão conseguir postar imagens, 
 História 4: Os usuários devem poder curtir os posts de outros usuários e poder fazê-lo uma única vez.
 
 ## Protótipo
-
-## Conceito final
+![img](./src/images/planejamento.jpeg)
 
 ## Linguagens e ferramentas utilizadas
 - *HTML5 e CSS*: HTML semântico, flexbox.
