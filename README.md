@@ -31,7 +31,7 @@ História 3: Nos posts, os usuários também deverão conseguir postar imagens, 
 História 4: Os usuários devem poder curtir os posts de outros usuários e poder fazê-lo uma única vez.
 
 ## Protótipo
-![img](./src/images/planejamento.jpeg)
+![img](./src/images/prototipo.jpeg)
 
 ## Linguagens e ferramentas utilizadas
 - *HTML5 e CSS*: HTML semântico, flexbox.
